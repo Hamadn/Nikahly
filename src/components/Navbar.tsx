@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import "../styles/global.css";
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 
 import {
@@ -23,6 +24,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/astro/react";
 
 interface MenuItem {
   title: string;
@@ -53,56 +55,63 @@ interface Navbar1Props {
 
 const Navbar = ({
   logo = {
-    url: "#",
+    url: "/",
     src: "/whiteLogo.svg",
     alt: "logo",
   },
   menu = [
     {
       title: "About",
-      url: "#",
+      url: "/about",
     },
     {
       title: "Find Your Match",
-      url: "#",
+      url: "/find-your-match",
     },
     {
       title: "Pricing",
-      url: "#",
+      url: "/pricing",
     },
     {
       title: "Guides",
-      url: "#",
+      url: "/guides",
     },
   ],
   auth = {
-    login: { text: "Log in", url: "#" },
-    signup: { text: "Sign up", url: "#" },
+    login: { text: "Log in", url: "/login" },
+    signup: { text: "Sign up", url: "/register" },
   },
 }: Navbar1Props) => {
   return (
     <section className="py-4">
       <div className="container">
         <nav className="hidden justify-between lg:flex items-center bg-primary rounded-3xl px-10 py-2">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 w-full">
             <a href={logo.url} className="flex items-center">
               <img src={logo.src} className="w-20" alt={logo.alt} />
             </a>
-            <div className="flex items-center">
+            <div className="flex items-center m-auto">
               <NavigationMenu>
-                <NavigationMenuList>
+                <NavigationMenuList className="gap-5">
                   {menu.map((item) => renderMenuItem(item))}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.text}</a>
-            </Button>
-            <Button asChild size="sm">
-              <a href={auth.signup.url}>{auth.signup.text}</a>
-            </Button>
+          <div className="flex items-center border border-secondary rounded-full bg-white">
+            <SignedOut>
+          <Button asChild size="sm" className="data-[active=true]:bg-gradient-to-b data-[active=true]:from-gradient-start data-[active=true]:to-gradient-end transition-all duration-300 rounded-full">
+                <SignInButton />
+              </Button>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+              <SignedOut>
+                <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end rounded-full">
+                  <SignUpButton />
+                </Button>
+              </SignedOut>
           </div>
         </nav>
         <div className="block lg:hidden">
@@ -112,8 +121,8 @@ const Navbar = ({
             </a>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="size-4" />
+                <Button size="icon">
+                  <Menu className="size-8" />
                 </Button>
               </SheetTrigger>
               <SheetContent className="overflow-y-auto">
@@ -133,12 +142,19 @@ const Navbar = ({
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
                   <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.text}</a>
+                  <SignedOut>
+                    <Button asChild size="sm" className="data-[active=true]:bg-gradient-to-b data-[active=true]:from-gradient-start data-[active=true]:to-gradient-end transition-all duration-300 rounded-full">
+                      <SignInButton />
                     </Button>
-                    <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.text}</a>
+                  </SignedOut>
+                  <SignedIn>
+                    <UserButton />
+                  </SignedIn>
+                  <SignedOut>
+                    <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end rounded-full">
+                      <SignUpButton />
                     </Button>
+                  </SignedOut>
                   </div>
                 </div>
               </SheetContent>

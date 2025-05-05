@@ -20,6 +20,8 @@ module.exports = {
         neon: "0 0 1.5rem #ffffff, 0 0 2.5rem #ffffff, 0 0 3.5rem #ffffff",
       },
       colors: {
+        'gradient-start': 'var(--gradient-start)',
+        'gradient-end': 'var(--gradient-end)',
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
