@@ -1,24 +1,8 @@
 ---
-import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/astro/react'
-import { Navbar } from '../components/Navbar';
 import '../styles/global.css';
-
-const { title } = Astro.props
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-  </head>
-  <body>
-    <Navbar client:load/>
-    <main>
-      <article>
-
-      </article>
-    </main>
-  </body>
-</html>
+<Layout>
+<p>Sign in to try Clerk out!</p>
+</Layout>
