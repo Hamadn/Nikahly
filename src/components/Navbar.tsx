@@ -2,6 +2,7 @@ import type { JSX } from "react";
 import "../styles/global.css";
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 
+
 import {
   Accordion,
   AccordionContent,
@@ -98,17 +99,19 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex items-center border border-secondary rounded-full bg-white">
+          <div className="flex items-center  rounded-full gap-2">
             <SignedOut>
-          <Button asChild size="sm" className="data-[active=true]:bg-gradient-to-b data-[active=true]:from-gradient-start data-[active=true]:to-gradient-end transition-all duration-300 rounded-full">
-                <SignInButton />
+          <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end transition-all duration-300 px-5 rounded-full">
+                <SignInButton>
+                  Login
+                </SignInButton>
               </Button>
               </SignedOut>
               <SignedIn>
                 <UserButton />
               </SignedIn>
               <SignedOut>
-                <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end rounded-full">
+                <Button asChild size="sm" className="bg-secondary text-primary border-2 border-gradient-start px-5 rounded-full">
                   <SignUpButton />
                 </Button>
               </SignedOut>
@@ -143,7 +146,7 @@ const Navbar = ({
                   </Accordion>
                   <div className="flex flex-col gap-3">
                   <SignedOut>
-                    <Button asChild size="sm" className="data-[active=true]:bg-gradient-to-b data-[active=true]:from-gradient-start data-[active=true]:to-gradient-end transition-all duration-300 rounded-full">
+                    <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end transition-all duration-300 rounded-full">
                       <SignInButton />
                     </Button>
                   </SignedOut>
