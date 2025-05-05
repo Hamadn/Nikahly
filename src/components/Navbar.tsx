@@ -66,7 +66,7 @@ const Navbar = ({
     },
     {
       title: "Find Your Match",
-      url: "/find-your-match",
+      url: "/fym",
     },
     {
       title: "Pricing",
@@ -91,7 +91,7 @@ const Navbar = ({
               <img src={logo.src} className="w-20" alt={logo.alt} />
             </a>
             <div className="flex items-center m-auto">
-              <NavigationMenu>
+            <NavigationMenu className="font-extralight">
                 <NavigationMenuList className="gap-5">
                   {menu.map((item) => renderMenuItem(item))}
                 </NavigationMenuList>

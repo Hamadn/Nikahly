@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   mode: "jit",
   content: [
@@ -18,6 +19,9 @@ module.exports = {
     extend: {
       textShadow: {
         neon: "0 0 1.5rem #ffffff, 0 0 2.5rem #ffffff, 0 0 3.5rem #ffffff",
+      },
+      fontFamily: {
+        sans: ['Kulim Park', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         'gradient-start': 'var(--gradient-start)',
