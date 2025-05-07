@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import "../styles/global.css";
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Menu } from "lucide-react";
 
 
 import {
@@ -80,7 +80,7 @@ const Navbar = ({
   ],
   auth = {
     login: { text: "Log in", url: "/login" },
-    signup: { text: "Sign up", url: "/register" },
+    signup: { text: "Sign up", url: "/signup" },
   },
 }: Navbar1Props) => {
   return (
