@@ -22,6 +22,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Kulim Park', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', "sans"],
       },
       colors: {
         'gradient-start': 'var(--gradient-start)',
