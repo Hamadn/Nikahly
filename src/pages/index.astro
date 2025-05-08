@@ -2,9 +2,10 @@
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
-import Pricing from "./pricing.astro";
 import PricingContent from "@/components/pricingContent.astro";
 import { FeaturesSectionWithHoverEffects } from "@/components/Features";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";
 
 interface Hero115Props {
   heading: string;
@@ -48,18 +49,18 @@ const Hero115 = {
             <h2 class="mx-auto max-w-screen-2xl font-poppins uppercase text-center text-primary text-3xl font-bold md:text-6xl">
               {Hero115.heading}
             </h2>
-            <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
+            <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl font-kulim text-center text-muted-foreground md:text-lg">
               {Hero115.description}
             </p>
             <div class="flex items-center justify-center gap-5 md:gap-10 pb-12 pt-3">
               {Hero115.waliButton && (
-                <Button size="lg" className="bg-muted text-primary border-2 border-gradient-start md:px-10 md:text-lg rounded-full md:h-12">
+                <Button size="lg" className="bg-white text-primary border-2 border-gradient-start hover:border-primary md:px-10 md:text-lg rounded-full md:h-12 hover:bg-primary hover:text-white transition-all duration-100">
                   <a href={Hero115.waliButton.url}>
                     {Hero115.waliButton.text}
                   </a>
                 </Button>
               )}
-              <Button size="lg" className="bg-gradient-to-b from-gradient-start to-gradient-end md:text-lg transition-all duration-300 md:px-10 rounded-full md:h-12">
+              <Button size="lg" className="bg-gradient-to-b from-gradient-start to-gradient-end hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary hover:border-2 hover:border-gradient-start hover:transition-all hover:duration-100 md:px-10 rounded-full md:h-12">
                 <a href={Hero115.button.url}>
                   {Hero115.button.text}
                 </a>
@@ -96,14 +97,14 @@ const Hero115 = {
 
     <div id="about-section" class="container bg-gradient-to-b from-gradient-start to-gradient-end p-12 mt-12 border rounded-3xl lg:flex lg:flex-row-reverse">
         <img src="/about-couple.svg" alt="couple" class="block mx-auto lg:mx-0 lg:w-1/2 lg:h-1/2 w-80 h-80">
-        <div id="paras" class="text-secondary flex flex-col items-center justify-center md:gap-10">
-            <p class="text-md md:text-2xl font-light text-wrap text-center p-5 font-sans">
+        <div id="paras" class="text-white flex flex-col items-center justify-center md:gap-10">
+            <p class="text-md md:text-2xl font-light text-wrap text-center p-5 font-kulim">
                 The word <strong>“Nikah (نكاح)”</strong> refers to marriage or wedlock in English. The addition of <strong>“ly (لي)”</strong> is an Arabic 
                 pronoun which means for me or mine in English. The word <strong>Nikahly</strong> is a combination of the word <strong>“Nikah”</strong> and  
                 suffix <strong>“ly”</strong>.  The complete meaning of the word would be <strong>“Marriage for me”</strong>.
             </p>
 
-            <p class="text-md md:text-2xl font-light text-wrap text-center p-5 font-sans">
+            <p class="text-md md:text-2xl font-light text-wrap text-center p-5 font-kulim">
                 <strong>Nikahly</strong> offers sincere and practicing Muslims a <strong>halal</strong> and faith-centered approach to marriage. The platform 
                 provides a trusted space, follows <strong>Shari’ah rulings</strong> and cultural sensitivities to help find potential like-minded,
                 <strong>compatible partners</strong>.
