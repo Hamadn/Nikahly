@@ -6,6 +6,12 @@
   * {
     @apply border-border outline-ring;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Poppins", sans-serif;
+  }
+  p, span, a, label, button, input, textarea {
+    font-family: "Kulim Park", sans-serif;
+  }
 }
 
 @theme inline {
@@ -46,7 +52,7 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.57 0.1709 25.54);
+  --background: oklch(0.99 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(0.57 0.1709 25.54);
   --card-foreground: oklch(0.141 0.005 285.823);
@@ -77,13 +83,13 @@
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
+  --background: oklch(0.19 0 0);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.21 0.006 285.885);
+  --card: oklch(0.57 0.1709 25.54);
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.21 0.006 285.885);
+  --popover: oklch(0.57 0.1709 25.54);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.645 0.246 16.439);
+  --primary: oklch(0.57 0.1709 25.54);
   --primary-foreground: oklch(0.969 0.015 12.422);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
@@ -97,7 +103,7 @@
   --ring: oklch(0.645 0.246 16.439);
   --gradient-start: oklch(0.65 0.2238 26.02);
   --gradient-end: oklch(0.34 0.0951 25.19);
-  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar: oklch(0.57 0.1709 25.54);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.645 0.246 16.439);
   --sidebar-primary-foreground: oklch(0.969 0.015 12.422);

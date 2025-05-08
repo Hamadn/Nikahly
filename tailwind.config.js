@@ -15,14 +15,14 @@ module.exports = {
         xl: '1280px',
         '2xl': '1440px',
       },
+      fontFamily: {
+        kulim: ["Kulim Park", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
     extend: {
       textShadow: {
         neon: "0 0 1.5rem #ffffff, 0 0 2.5rem #ffffff, 0 0 3.5rem #ffffff",
-      },
-      fontFamily: {
-        sans: ['Kulim Park', ...defaultTheme.fontFamily.sans],
-        poppins: ['Poppins', "sans"],
       },
       colors: {
         'gradient-start': 'var(--gradient-start)',

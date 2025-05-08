@@ -1,7 +1,9 @@
 ---
 import { Navbar } from '../components/Navbar';
 import '../styles/global.css';
-
+import { Footer } from '../components/Footer';
+import '@fontsource/kulim-park';
+import '@fontsource/poppins';
 ---
 
 <html lang="en">
@@ -12,8 +14,9 @@ import '../styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <title>Nikahly</title>
   </head>
-  <body class="font-sans">
+  <body class="dark:bg-background dark:text-foreground">
     <Navbar client:load/>
       <slot />
+      <Footer client:load/>
   </body>
 </html>
