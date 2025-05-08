@@ -1,126 +1,106 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Button } from "@/components/ui/button";
+import { FeaturesSectionWithHoverEffects } from "@/components/Features";
+
+interface Hero115Props {
+  heading: string;
+  description: string;
+  button: {
+    text: string;
+    url: string;
+  };
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const Hero115 = {
+  heading: "ABOUT NIKAHLY",
+  description: "Nikahly is a faith-centered Muslim matrimonial platform designed to help you find a righteous partner through a secure, respectful, and Shariah-compliant process. With features like Wali (Guardian) involvement, AI-powered moderation, and Islamic value-based matchmaking. Nikahly ensures every connection is serious and spritually aligned.",
+  description2: "No casual dating. No distractions. Just sincere intensions for nikah. Join now and start your journey!",
+  button: {
+    text: "GET STARTED",
+    url: "/signup",
+  },
+  waliButton: {
+    text: "JOIN AS WALI",
+    url: "/wali",
+  },
+  imageSrc: "/about-hero.svg",
+  imageAlt: "hero",
+};
 ---
 
 <Layout>
-
-    <body>
-        
-        <!-- ------ ------ ------ HERO SECTION DIV START ------ ------ ------ -->
-
-        <div id="hero-section" class="container flex flex-col flex-wrap items-center justify-center mt-24">
-            <img src="/about-hero.svg" alt="hero" class="w-96">
-            <h1 class="font-sans font-extrabold text-5xl text-primary pb-10 text-center px-20">ABOUT NIKAHLY</h1>
-
-            <div class="flex flex-col px-20 gap-20">
-
-                <p class="hero-text font-sans font-light text-2xl text-primary text-wrap text-center max-w-7xl">
-                    Nikahly is a faith-centered Muslim matrimonial platform designed to help you find a righteous partner 
-                    through a secure, respectful, and Shariah-compliant process. With features like Wali (Guardian) involvement, 
-                    AI-powered moderation, and Islamic value-based matchmaking. Nikahly ensures every connection is serious and spritually aligned. 
-                </p>
-
-                <p class="hero-text font-sans font-light text-2xl text-primary text-wrap text-center max-w-7xl">
-                    No casual dating. No distractions. Just sincere intensions for nikah. Join now and start your journey!
-                </p>
-
-            </div>
-
-
-
-        </div>
-
-        <!-- ------ ------ ------ HERO SECTION DIV END ------ ------ ------ -->
-
-        <h2 class="container text-3xl font-bold text-primary text-left mt-24"> The Naming Process</h2>
-
-        <!-- ------ ------ ------ NAMING PROCESS SECTION DIV START ------ ------ ------ -->
-
-        <div id="naming" class="container flex justify-between p-8 mt-6">
-
-            <div id="paras" class="flex flex-col items-left gap-20 max-w-2xl">
-
-                <p class="text-2xl font-light text-wrap text-left p-5">
-                    The word <span class="font-bold">“Nikah (نكاح)”</span> refers to marriage or wedlock in English. The addition of <span class="font-bold">“ly (لي)”</span> is an Arabic 
-                    pronoun which means for me or mine in English. The word Nikahly is a combination of the word <span class="font-bold">“Nikah”</span> and  
-                    suffix <span class="font-bold">“ly”</span>.  The complete meaning of the word would be <span class="font-bold">“Marriage for me”</span>.
-                </p>
     
-                <p class="text-2xl font-light text-wrap text-left p-5">
-                    <span class="font-bold">Nikahly</span> offers sincere and practicing Muslims a <span class="font-bold">halal</span> and faith-centered approach to marriage. The platform 
-                    provides a trusted space, follows <span class="font-bold">Shari’ah rulings</span> and cultural sensitivities to help find potential like-minded,
-                    <span class="font-bold">compatible partners</span>.
-                </p>
+    <!-- ------ ------ ------ HERO SECTION DIV START ------ ------ ------ -->
+
+    <section class="overflow-hidden py-32">
+        <div class="container">
+            <div class="flex flex-col gap-5">
+                <div class="relative flex flex-col gap-5">
+                    <img
+                        src={Hero115.imageSrc}
+                        alt={Hero115.imageAlt}
+                        class="mx-auto h-full max-h-[450px] w-full max-w-screen-sm rounded-2xl object-cover"
+                    />
+                    <h2 class="mx-auto max-w-screen-2xl font-poppins uppercase text-center text-primary text-3xl font-bold md:text-6xl">
+                        {Hero115.heading}
+                    </h2>
+                    <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
+                        {Hero115.description}
+                        <br /> <br />
+                        {Hero115.description2}
+                    </p>
+
+                </div>
             </div>
-
-            <img src="/naming-section.svg" alt="naming" class="w-96">
-
         </div>
+    </section>
+    
+    <!-- ------ ------ ------ HERO SECTION DIV END ------ ------ ------ -->
+
+    <!-- ------ ------ ------ NAMING PROCESS SECTION DIV START ------ ------ ------ -->
 
 
+    <div class="container">
+        <div class="flex gap-2 flex-col lg:justify-left lg:items-left text-center lg:text-left">
+            <h2 class="text-3xl md:text-5xl font-poppins font-regular text-primary">
+              The Naming Process
+            </h2>
+
+            <div class="lg:flex lg:flex-row-reverse">
+                <img src="/naming-section.svg" alt="couple" class="block mx-auto lg:mx-0 lg:w-1/2 lg:h-1/2 w-80 h-80">
+                <div id="paras" class="flex flex-col md:gap-10 text-muted-foreground md:text-lg">
+                    <p class="text-md md:text-2xl font-light text-wrap p-5 font-sans">
+                        The word <strong>“Nikah (نكاح)”</strong> refers to marriage or wedlock in English. The addition of <strong>“ly (لي)”</strong> is an Arabic 
+                        pronoun which means for me or mine in English. The word <strong>Nikahly</strong> is a combination of the word <strong>“Nikah”</strong> and  
+                        suffix <strong>“ly”</strong>.  The complete meaning of the word would be <strong>“Marriage for me”</strong>.
+                    </p>
         
-
-        
-
-        <!-- ------ ------ ------ NAMING PROCESS SECTION DIV END ------ ------ ------ -->
-
-        <h2 class="text-4xl font-bold text-primary text-center mt-16">OUR SERVICES</h2>
-
-        <!-- ------ ------ ------ SERVICES SECTION DIV START ------ ------ ------ -->
-
-        <div id="sub-services" class="container flex justify-center flex-wrap items-center gap-20 mt-12 p-12">
-
-            <!-- AI CARD -->
-            <div id="sub-service-card" class="flex flex-col items-center justify-center w-96">
-                <img src="/ai-services-sec.svg" alt="services" class="w-28 h-28">
-                <p class="text-lg font-normal text-primary mt-16 max-w-72 text-wrap text-center">
-                    AI-Driven word filtering that helps prevent unethical language, harassment, and other social issues.
-                </p>
-            </div>
-
-            <!-- RING CARD -->
-            <div id="sub-service-card" class="flex flex-col items-center justify-center w-96">
-                <img src="/ring-services-section.svg" alt="services" class="w-28 h-28">
-                <p class="text-lg font-normal text-primary mt-16 max-w-72 text-wrap text-center">
-                    Custom matchmaking tailored to your spouse preferences through a personalized questionnaire.
-                </p>
-            </div>
-
-            <!-- ROBOTFACE CARD -->
-            <div id="sub-service-card" class="flex flex-col items-center justify-center w-96">
-                <img src="/robotface-services-section.svg" alt="services" class="w-28 h-28">
-                <p class="text-lg font-normal text-primary mt-16 max-w-72 text-wrap text-center">
-                    AI-Driven word filtering that helps prevent unethical language, harassment, and other social issues.
-                </p>
-            </div>
+                    <p class="text-md md:text-2xl font-light text-wrap p-5 font-sans">
+                        <strong>Nikahly</strong> offers sincere and practicing Muslims a <strong>halal</strong> and faith-centered approach to marriage. The platform 
+                        provides a trusted space, follows <strong>Shari’ah rulings</strong> and cultural sensitivities to help find potential like-minded,
+                        <strong>compatible partners</strong>.
+                    </p>
+                </div>
+            </div>    
+        </div>
+    </div>
 
 
-            <!-- QURAN CARD -->
-            <div id="sub-service-card" class="flex flex-col items-center justify-center w-96">
-                <img src="/quran-services-section.svg" alt="services" class="w-28 h-28">
-                <p class="text-lg font-normal text-primary mt-16 max-w-72 text-wrap text-center">
-                    Provides access to articles and video guides based on the Quran and Sunnah.
-                </p>
-            </div>
+    <!-- ------ ------ ------ NAMING PROCESS SECTION DIV END ------ ------ ------ -->
 
-            <!-- SECURITY CARD -->
-            <div id="sub-service-card" class="flex flex-col items-center justify-center w-96">
-                <img src="/security-services-section.svg" alt="services" class="w-28 h-28">
-                <p class="text-lg font-normal text-primary mt-16 max-w-72 text-wrap text-center">
-                    Ensures privacy by blurring images and limiting chat with access only unlocked upon wali approval.
-                </p>
-            </div>
+    <br /> <br /> <br /> <br />
+    <!-- ------ ------ ------ Services Section Div Start ------ ------ ------ -->
+    <div class="flex gap-2 flex-col justify-center items-center container">
+        <h2 class="text-3xl md:text-5xl tracking-tighter max-w-xl font-poppins text-center font-regular text-primary">
+          Our Services
+        </h2>
+        <p class="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-2xl font-sans text-center">
+          We offer a range of services to help you find the perfect match for your spouse.
+        </p>
+      </div>
+      <FeaturesSectionWithHoverEffects />
 
-            <!-- CHAT CARD -->
-            <div id="sub-service-card" class="flex flex-col items-center justify-center w-96">
-                <img src="/chat-services-section.svg" alt="services" class="w-28 h-28">
-                <p class="text-lg font-normal text-primary mt-16 max-w-72 text-wrap text-center">
-                    Implements a limited chat feature to ensure conversations align with community values.
-                </p>
-            </div>
-
-        </div>  
-
-        <!-- ------ ------ ------ SERVICES SECTION DIV END ------ ------ ------ -->
-    </body>
 </Layout>

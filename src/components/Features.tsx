@@ -13,10 +13,10 @@ export function FeaturesSectionWithHoverEffects() {
       description: "Custom matchmaking tailored to your spouse preferences through a personalized questionnaire."
     },
     {
-      title: "AI-Driven Word Filtering",
+      title: "Smart Moderator Bot",
       icon: <img src="/robotface-services-section.svg" alt="robotface-services-section" />,
       description:
-        "AI-Driven word filtering that helps prevent unethical language, harassment, and other social issues.",
+        "Smart moderator bot to maintain respectful conversations by flagging inappropriate content.",
     },
     {
       title: "Quran and Sunnah Access",
