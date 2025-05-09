@@ -1,8 +1,111 @@
 ---
-import Layout from "@/layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+import { FeaturesSectionWithHoverEffects } from "@/components/Features";
+
+interface Hero115Props {
+  heading: string;
+  button: {
+    text: string;
+    url: string;
+  };
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+const Hero115 = {
+  heading: "Marriage Guides",
+  imageSrc: "/guide-hero.svg",
+  imageAlt: "hero",
+};
 ---
 
 <Layout title="Guides">
 
-    <p>Guides</p>
+    <section class="overflow-hidden py-32">
+        
+        <div class="container">
+            <div class="flex flex-col">
+                <div class="relative flex flex-col">
+                    <img
+                        src={Hero115.imageSrc}
+                        alt={Hero115.imageAlt}
+                        class="mx-auto h-full max-h-[450px] w-full max-w-screen-sm rounded-2xl object-cover"
+                    />
+                    <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-4xl">
+                        {Hero115.heading}
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="aayahs" class="container flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-gradient-start to-gradient-end p-12 border rounded-3xl max-w-screen-lg">
+            <h2 class="text-xl md:text-3xl lg:text-5xl font-semibold text-white text-center">
+              وَٱلطَّيِّبَـٰتُ لِلطَّيِّبِينَ وَٱلطَّيِّبُونَ لِلطَّيِّبَـٰتِ
+            </h2>
+            <p class="text-white text-lg">
+              سورة النور - ٢٤:٢٨
+            </p>
+    
+            <br /> 
+    
+            <h2 class="text-xl md:text-3xl font-semibold text-white text-center uppercase">
+              And virtuous women are for virtuous men, and virtuous men are for virtuous women
+            </h2>
+            <p class="text-white text-sm">
+              An Nur : 24:28
+            </p>
+          </div>
+        
+    </div>
+
+    <!-- ------ ------ ------ Video Section Div Start ------ ------ ------ -->
+
+    <section class="container my-20">
+
+        <div class="flex gap-2 flex-col justify-center items-center">
+            <h2 class="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular text-primary">
+              Videos
+            </h2>
+            <p class="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+              Browse through the videos on marriage and learn about the importance and significance of marriage.
+            </p>
+          </div>
+            
+    </section>
+
+    <div class="container">
+        <div class="flex gap-2 bg-muted">
+            <p>s</p>
+        </div>
+    </div>
+
+    <!-- ------ ------ ------ Video Section Div End ------ ------ ------ -->
+
+    <!-- ------ ------ ------ Blog Section Div Start ------ ------ ------ -->
+
+    <section class="container my-20">
+
+        <div class="flex gap-2 flex-col justify-center items-center">
+            <h2 class="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular text-primary">
+              Blogs
+            </h2>
+            <p class="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+              Browse through the blog posts on marriage and learn about the importance and significance of marriage.
+            </p>
+          </div>
+            
+    </section>
+
+    <div class="container">
+        <div class="flex gap-2 bg-muted">
+            <p>s</p>
+        </div>
+    </div>
+
+    <!-- ------ ------ ------ Blog Section Div End ------ ------ ------ -->
+
+
+
 </Layout>
