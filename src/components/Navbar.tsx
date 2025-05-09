@@ -92,7 +92,7 @@ const Navbar = ({
               <img src={logo.src} className="w-20" alt={logo.alt} />
             </a>
             <div className="flex items-center m-auto">
-            <NavigationMenu className="font-extralight">
+              <NavigationMenu className="font-extralight">
                 <NavigationMenuList className="gap-5">
                   {menu.map((item) => renderMenuItem(item))}
                 </NavigationMenuList>
@@ -100,21 +100,28 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex items-center rounded-full gap-2">
-            <SignedOut>
-          <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary transition-all duration-100 px-6 rounded-full">
-                <SignInButton>
+            <SignedOut >
+              <SignInButton>
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-b from-gradient-start to-gradient-end hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary transition-all duration-100 px-6 rounded-full"
+                >
                   Login
-                </SignInButton>
-              </Button>
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-              <SignedOut>
-                <Button asChild size="sm" className="text-primary border-2 border-gradient-start px-4 rounded-full hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-gradient-start hover:to-gradient-end hover:text-white transition-all duration-100 bg-white">
-                  <SignUpButton />
                 </Button>
-              </SignedOut>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <Button
+                asChild
+                size="sm"
+                className="text-primary border-2 border-gradient-start px-4 rounded-full hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-gradient-start hover:to-gradient-end hover:text-white transition-all duration-100 bg-white"
+              >
+                <SignUpButton />
+              </Button>
+            </SignedOut>
           </div>
         </nav>
         <div className="block lg:hidden">
@@ -131,7 +138,10 @@ const Navbar = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2 justify-center">
+                    <a
+                      href={logo.url}
+                      className="flex items-center gap-2 justify-center"
+                    >
                       <img src={logo.src} className="w-20" alt={logo.alt} />
                     </a>
                   </SheetTitle>
@@ -145,19 +155,28 @@ const Navbar = ({
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
                   <div className="flex flex-col gap-5">
-                  <SignedOut>
-                    <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end transition-all duration-300 rounded-full">
-                      <SignInButton />
-                    </Button>
-                  </SignedOut>
-                  <SignedIn>
-                    <UserButton />
-                  </SignedIn>
-                  <SignedOut>
-                    <Button asChild size="sm" className="bg-gradient-to-b from-gradient-start to-gradient-end rounded-full">
-                      <SignUpButton />
-                    </Button>
-                  </SignedOut>
+                    <SignedOut>
+                    <SignInButton>
+                <Button
+                  size="sm"
+                  className="bg-gradient-to-b from-gradient-start to-gradient-end hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary transition-all duration-100 px-6 rounded-full"
+                >
+                  Login
+                </Button>
+              </SignInButton>
+                    </SignedOut>
+                    <SignedIn>
+                      <UserButton />
+                    </SignedIn>
+                    <SignedOut>
+                      <Button
+                        asChild
+                        size="sm"
+                        className="bg-gradient-to-b from-gradient-start to-gradient-end rounded-full"
+                      >
+                        <SignUpButton />
+                      </Button>
+                    </SignedOut>
                   </div>
                 </div>
               </SheetContent>
