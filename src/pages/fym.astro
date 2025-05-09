@@ -1,7 +1,34 @@
 ---
+import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";
+
+interface Hero115Props {
+  heading: string;
+  description: string;
+}
+
+const Hero115 = {
+  heading: "Find your match - the halal way!",
+  description: "We’re here to help you find the partner you’ve been praying for - a companion to complete half your faith and share a lifetime of love, trust, and purpose. Begin your journey with us today, where meaningful connections are built on shared values, sincerity, and hope for the future.",
+};
 ---
 
 <Layout>
-<p class="text-black text-9xl">Find Your Match</p>
+
+    <section class="overflow-hidden py-32">
+        <div class="container">
+          <div class="flex flex-col gap-5">
+            <div class="relative flex flex-col gap-5">
+              <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl">
+                {Hero115.heading}
+              </h2>
+              <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
+                {Hero115.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 </Layout> 
