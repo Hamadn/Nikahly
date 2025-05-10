@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";
+
+interface Hero115Props {
+  heading: string;
+  description: string;
+}
+
+const Hero115 = {
+  heading: "Booking Details",
+  description: "Welcome to Nikahly's booking details page!",
+};
+---
+
+<Layout>
+
+    <section class="overflow-hidden py-32">
+        <div class="container">
+          <div class="flex flex-col gap-5">
+            <div class="relative flex flex-col gap-5">
+              <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl">
+                {Hero115.heading}
+              </h2>
+              <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
+                {Hero115.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tidycal-embed" data-path="nikahlyofficial/30-minute-meeting"></div><script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+</Layout> 
