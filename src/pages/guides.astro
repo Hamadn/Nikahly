@@ -1,6 +1,7 @@
 ---
+import { HeroVideoDialog } from "@/components/Video";
+import { VideoGrid } from "@/components/VideoGrid";
 import Layout from "../layouts/Layout.astro";
-import { FeaturesSectionWithHoverEffects } from "@/components/Features";
 
 interface Hero115Props {
   heading: string;
@@ -39,8 +40,8 @@ const Hero115 = {
         </div>
 
     </section>
-
-    <div id="aayahs" class="container flex flex-col items-center justify-center gap-4 bg-gradient-to-b from-gradient-start to-gradient-end p-12 border rounded-3xl max-w-screen-lg">
+    <div class="container">
+    <div id="aayahs" class="container flex flex-col items-center justify-center gap-4 bg-primary p-12 border rounded-3xl max-w-screen-lg">
             <h2 class="text-xl md:text-3xl lg:text-5xl font-semibold text-white text-center">
               وَٱلطَّيِّبَـٰتُ لِلطَّيِّبِينَ وَٱلطَّيِّبُونَ لِلطَّيِّبَـٰتِ
             </h2>
@@ -57,7 +58,6 @@ const Hero115 = {
               An Nur : 24:28
             </p>
           </div>
-        
     </div>
 
     <!-- ------ ------ ------ Video Section Div Start ------ ------ ------ -->
@@ -72,13 +72,11 @@ const Hero115 = {
               Browse through the videos on marriage and learn about the importance and significance of marriage.
             </p>
           </div>
-            
+
     </section>
 
-    <div class="container">
-        <div class="flex gap-2 bg-muted">
-            <p>s</p>
-        </div>
+    <div class="container relative">
+      <VideoGrid client:load />
     </div>
 
     <!-- ------ ------ ------ Video Section Div End ------ ------ ------ -->
