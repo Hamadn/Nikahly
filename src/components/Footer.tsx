@@ -164,6 +164,9 @@ function Footer() {
             <a href="/termsnconditions" className="transition-colors hover:text-primary">
               Terms & Conditions
             </a>
+            <a href="/faq" className="transition-colors hover:text-primary">
+              FAQ
+            </a>
           </nav>
         </div>
       </div>
