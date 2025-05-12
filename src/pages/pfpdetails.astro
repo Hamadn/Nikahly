@@ -1,0 +1,347 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";   
+---
+
+<Layout>
+
+    <div class="container mt-20 flex flex-col gap-2">
+
+        <div class="flex justify-center items-center text-center lg:text-left lg:justify-between">
+            <h2 class="text-2xl md:text-4xl text-primary lg:pt-28 font-bold">
+            Profile Details
+            </h2>
+
+            <img src="/pfp-avatar.svg" alt="pfpdetails" class="h-full w-40 rounded-full hidden lg:block">
+        </div>
+        
+    </div>
+
+    <!-- div for the profile details card -->
+
+    <div class="container bg-accent rounded-xl md:mx-lg">
+
+        <!-- div for the profile details & btns start -->
+
+        <div class="p-5 flex flex-col gap-2 justify-center items-center lg:justify-between lg:flex-row">
+
+            <div id="namestuff" class="flex flex-col gap-2">
+                <h2 class = "text-2xl lg:text-5xl font-semibold text-primary text-center lg:text-left">
+                    Ahmed Hashim
+                 </h2>
+
+                 <div class="flex flex-col text-center lg:flex-row lg:gap-2">
+                    <p class="text-md text-muted-foreground lg:text-xl">
+                        #A0192H92
+                    </p>
+                    <p class="text-md text-muted-foreground lg:text-xl">
+                        @ahmedhashim
+                    </p>
+                 </div>
+            </div>
+
+            <div class="btns flex gap-5 p-2">
+                <button class="text-md lg:text-2xl">
+                    <a href="/chat">
+                        <i class="fa-solid fa-message bg-primary text-white rounded-full p-2"></i>
+                    </a>
+                </button>
+                <button class="text-md lg:text-2xl">
+                    <a href="/report">
+                        <i class="fa-solid fa-triangle-exclamation bg-primary text-white rounded-full p-2"></i>
+                    </a>
+                </button>
+                <button class="text-md lg:text-2xl">
+                    <a href="/bookmark">
+                        <i class="fa-solid fa-bookmark bg-primary text-white rounded-full p-2"></i>
+                    </a>
+                </button>
+                <button class="text-md lg:text-2xl">
+                    <a href="/heart">
+                        <i class="fa-solid fa-heart bg-primary text-white rounded-full p-2"></i>
+                    </a>
+                </button>
+            </div>
+        </div>
+
+        <!-- div for the profile details & btns end -->
+
+        <!-- div for the age, flag, location, nationality start -->
+
+        <div id="age-flag-location-nation" class="p-5 flex flex-col gap-5 mt-5 lg:mt-24 justify-center items-center lg:justify-between lg:flex-row">
+
+            <img src="/uae-flag.svg" alt="age" class="h-full w-16">
+
+            <div id="location" class="flex gap-2 flex-wrap">
+                <i class="fa-solid fa-location-dot text-md lg:text-xl"></i>
+                <p class="text-md lg:text-xl">Munich, Germany</p>
+            </div>
+
+            <p class="text-md lg:text-xl">Single</p>
+
+            <p class="text-md lg:text-xl">24 Years Old</p>
+
+        </div>
+
+        <!-- div for the age, flag, location, nationality end -->
+
+        <!-- div for personality traits start -->
+
+        <div id="traits" class="flex flex-wrap gap-2 p-2 mt-5 justify-center items-center lg:justify-start">
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🕌 Hafidh
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🥰 Pure-hearted
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                ❤️ Loving
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🧠 Sharp-minded
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                😎 Confident
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🎯 Daring
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                💗 Passionate
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                😜 Prankster
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                💎 Elegant
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🥶 Cold
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🥳 Joyful
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🥇 Winner
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🦉 Wise
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                😂 Humorous
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🎯 Straightforward
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                💫 Spiritual
+            </p>
+
+        </div>
+
+        <!-- div for personality traits end -->
+
+        <!-- div for thedeen traits start -->
+
+        <div id="traits" class="flex flex-wrap gap-2 p-2 mt-5 justify-center items-center lg:justify-start">
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🕋 Comitted Worshipper
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🧑🏻‍🎓 Student of Knowledge
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                📖 Reads Quran
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🕋 Performed Umrah
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                ☪️ Fast Observer 
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🤲🏻 Dua
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🕌 Regular Masjid Visitor
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                📿 Zikr Lover
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🕊️ Modest Values
+            </p>
+
+            <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                🌍 Community Volunteer
+            </p>
+
+        </div>
+
+        <!-- div for thedeen traits end -->
+
+        <br><br><br>
+
+        <h4 class="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+            My Looks & Appearance
+        </h4>
+
+        <div class="flex flex-wrap justify-center items-center lg:justify-between gap-5 p-10">
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Skin Color</h5>
+                <p class="text-md lg:text-xl">Fair Brown</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Height</h5>
+                <p class="text-md lg:text-xl">193 cm</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Weight</h5>
+                <p class="text-md lg:text-xl">76 kg</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Body Shape</h5>
+                <p class="text-md lg:text-xl">Shredded</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Eye Color</h5>
+                <p class="text-md lg:text-xl">Brown</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Beard</h5>
+                <p class="text-md lg:text-xl">Yes</p>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <h4 class="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+            My Religion
+        </h4>
+
+        <div class="flex flex-wrap justify-center items-center lg:justify-between gap-5 p-10">
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Devotion</h5>
+                <p class="text-md lg:text-xl">Complete</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Sect</h5>
+                <p class="text-md lg:text-xl">Hanafi</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Revert</h5>
+                <p class="text-md lg:text-xl">No</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Practicing Since</h5>
+                <p class="text-md lg:text-xl">Birth</p>
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+                <h5 class="text-md lg:text-xl font-semibold">Prayer Pattern</h5>
+                <p class="text-md lg:text-xl">Punctual</p>
+            </div>
+        </div>
+
+        <br><br><br>
+
+        <h4 class="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+            My Education & Employment
+        </h4>
+
+        <p class="text-center lg:text-left text-md lg:text-xl text-wrap pt-5">
+            Graduated in Islamic Studies and currently working as a part-time teacher. I have experience working with youth and focus on 
+            educational development within Muslim communities.
+        </p>
+
+        <br><br><br>
+
+        <h4 class="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+            What would my ideal partner be like?
+        </h4>
+
+        <p class="text-center lg:text-left text-md lg:text-xl text-wrap pt-5">
+            Someone who understands deen and dunya balance, who is patient and communicates well. I value honesty and emotional intelligence 
+            in a spouse.
+        </p>
+
+        <br><br><br>
+
+        <h4 class="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+            My Hobbies & Interests
+        </h4>
+
+        <p class="text-center lg:text-left text-md lg:text-xl text-wrap pt-5">
+            Reading Seerah books, journaling, and doing dawah work in free time. I also enjoy quiet time in nature and attending 
+            halaqas regularly.
+        </p>
+
+        <br><br><br>
+
+        <h4 class="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+            How do I dress/cover myself?
+        </h4>
+
+        <p class="text-center lg:text-left text-md lg:text-xl text-wrap pt-5">
+            I follow Islamic dress codes with modesty in mind. I prefer loose clothing and try to keep a clean and presentable appearance.
+        </p>
+
+        <br><br><br>
+
+        <div class="btns flex gap-5 p-2 justify-center items-center">
+            <button class="text-md lg:text-2xl">
+                <a href="/chat">
+                    <i class="fa-solid fa-message bg-primary text-white rounded-full p-2"></i>
+                </a>
+            </button>
+            <button class="text-md lg:text-2xl">
+                <a href="/report">
+                    <i class="fa-solid fa-triangle-exclamation bg-primary text-white rounded-full p-2"></i>
+                </a>
+            </button>
+            <button class="text-md lg:text-2xl">
+                <a href="/bookmark">
+                    <i class="fa-solid fa-bookmark bg-primary text-white rounded-full p-2"></i>
+                </a>
+            </button>
+            <button class="text-md lg:text-2xl">
+                <a href="/heart">
+                    <i class="fa-solid fa-heart bg-primary text-white rounded-full p-2"></i>
+                </a>
+            </button>
+        </div>
+
+        <br><br><br>
+    </div>
+
+    <br><br><br>
+
+    
+    
+</Layout>   
