@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { FAQ } from '../components/FAQ';
+import "../styles/global.css";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";
+
+const Hero115 = {
+  heading: "Frequently Asked Questions",
+  description: "Find answers to common questions about our service!",
+};
+---
+
+<Layout>
+
+    <section class="overflow-hidden py-24">
+        <div class="container">
+            <div class="relative w-full flex flex-col gap-5">
+                <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl">
+                  {Hero115.heading}
+                </h2>
+                <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
+                  {Hero115.description}
+                </p>
+              </div>
+        </div>
+    </section>
+
+    <div class="container pb-24">
+      <FAQ client:load />
+    </div>
+
+
+</Layout>
