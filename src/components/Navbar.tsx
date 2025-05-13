@@ -25,7 +25,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/astro/react";
+import { SignedIn, SignedOut, UserButton } from "@clerk/astro/react";
 
 interface MenuItem {
   title: string;
@@ -100,15 +100,15 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex items-center rounded-full gap-2">
-            <SignedOut >
-              <SignInButton>
+            <SignedOut>
+              <a href="/login">
                 <Button
                   size="sm"
                   className="bg-gradient-to-b from-gradient-start to-gradient-end hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary transition-all duration-100 px-6 rounded-full"
                 >
-                  Login
+                  Sign in
                 </Button>
-              </SignInButton>
+              </a>
             </SignedOut>
             <SignedIn>
               <UserButton />
@@ -119,7 +119,7 @@ const Navbar = ({
                 size="sm"
                 className="text-primary border-2 border-gradient-start px-4 rounded-full hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-gradient-start hover:to-gradient-end hover:text-white transition-all duration-100 bg-white"
               >
-                <SignUpButton />
+                <a href="/signup">Sign up</a>
               </Button>
             </SignedOut>
           </div>
@@ -156,25 +156,22 @@ const Navbar = ({
                   </Accordion>
                   <div className="flex flex-col gap-5">
                     <SignedOut>
-                    <SignInButton>
-                <Button
-                  size="sm"
-                  className="bg-gradient-to-b from-gradient-start to-gradient-end hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary transition-all duration-100 px-6 rounded-full"
-                >
-                  Login
-                </Button>
-              </SignInButton>
+                      <Button
+                        size="sm"
+                        className="bg-gradient-to-b from-gradient-start to-gradient-end hover:border-2 hover:border-gradient-start hover:bg-gradient-to-b hover:from-white hover:to-white hover:text-primary transition-all duration-100 px-6 rounded-full"
+                      >
+                        <a href="/login">Sign in</a>
+                      </Button>
                     </SignedOut>
                     <SignedIn>
                       <UserButton />
                     </SignedIn>
                     <SignedOut>
                       <Button
-                        asChild
                         size="sm"
                         className="bg-gradient-to-b from-gradient-start to-gradient-end rounded-full"
                       >
-                        <SignUpButton />
+                        <a href="/signup">Sign up</a>
                       </Button>
                     </SignedOut>
                   </div>
