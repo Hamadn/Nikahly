@@ -167,8 +167,8 @@ function Footer() {
             <a href="/faq" className="transition-colors hover:text-primary">
               FAQ
             </a>
-            <a href="/profile" className="transition-colors hover:text-primary">
-              Profile Details
+            <a href="/Onboardpage1" className="transition-colors hover:text-primary">
+              Onboarding Pages
             </a>
           </nav>
         </div>
