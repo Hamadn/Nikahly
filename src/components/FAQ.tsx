@@ -64,6 +64,7 @@ export function FAQ() {
             <AccordionContent className="text-md md:text-lg lg:text-xl font-light">
               {typeof faq.answer === 'string' ? faq.answer : <div dangerouslySetInnerHTML={{ __html: faq.answer.__html }} />}
             </AccordionContent>
+
           </AccordionItem>
         ))}
       </Accordion>

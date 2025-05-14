@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import { SignUp } from "@clerk/astro/components";
+import { Footer } from "@/components/Footer";
+---
+
+<div class="min-h-screen flex flex-col container">
+  {/* Header */}
+  <header class="w-full py-4 px-6 flex justify-between items-center">
+    <a href="/" class="flex items-center">
+      <img src="/redLogo.svg" alt="logo" class="w-20" />
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="/login" class="px-4 py-2 text-primary font-medium">Sign in</a>
+      <a
+        href="/signup"
+        class="px-4 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors"
+      >
+        Sign up
+      </a>
+    </div>
+  </header>
+
+  {/* Signup Form */}
+  <div class="flex-1 flex items-center justify-center">
+    <SignUp
+      appearance={{
+        layout: {
+          logoImageUrl: "/redLogo.svg",
+          socialButtonsPlacement: "bottom",
+        },
+        elements: {
+          formFieldHintText__lastName: {
+            display: "none", 
+          },
+          formFieldHintText__firstName: {
+            display: "none", 
+          },
+          rootBox: {
+            width: "60rem",
+            maxWidth: "60rem",
+          },
+          cardBox: {
+            width: "60rem",
+            maxWidth: "60rem",
+          },
+          card: {
+            width: "60rem",
+            maxWidth: "60rem",
+          },
+          formButtonPrimary: {
+            backgroundColor: "#c7413e",
+          },
+        },
+      }}
+    />
+  </div>
+</div>
