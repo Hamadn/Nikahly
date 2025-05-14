@@ -8,4 +8,5 @@ export default defineConfig({
   integrations: [react(), tailwind(), clerk()],
   adapter: node({ mode: 'standalone' }),
   output: 'server',
+  site: 'https://nikahly.me',
 })
