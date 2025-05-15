@@ -170,6 +170,9 @@ function Footer() {
             <a href="/Onboardpage1" className="transition-colors hover:text-primary">
               Onboarding Pages
             </a>
+            <a href="/profile" className="transition-colors hover:text-primary">
+              Profile
+            </a>
           </nav>
         </div>
       </div>
