@@ -1,11 +1,12 @@
 import { defineConfig } from 'astro/config'
-import node from '@astrojs/node'
+import vercel from '@astrojs/vercel'
 import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 import clerk from '@clerk/astro'
 
 export default defineConfig({
   integrations: [react(), tailwind(), clerk()],
-  adapter: node({ mode: 'standalone' }),
+  adapter: vercel(),
   output: 'server',
+  site: 'https://nikahly.me',
 })
