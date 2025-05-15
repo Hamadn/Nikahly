@@ -163,9 +163,6 @@ const Navbar = ({
                         <a href="/login">Sign in</a>
                       </Button>
                     </SignedOut>
-                    <SignedIn>
-                      <UserButton />
-                    </SignedIn>
                     <SignedOut>
                       <Button
                         size="sm"
@@ -174,6 +171,9 @@ const Navbar = ({
                         <a href="/signup">Sign up</a>
                       </Button>
                     </SignedOut>
+                    <SignedIn>
+                      <UserButton />
+                    </SignedIn>
                   </div>
                 </div>
               </SheetContent>

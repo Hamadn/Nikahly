@@ -1,6 +1,6 @@
 ---
+import { SignIn } from '@clerk/astro/components';
 import '../styles/global.css';
-import LoginForm from '@/components/LoginForm';
 ---
 
 <div class="min-h-screen flex flex-col container">
@@ -21,7 +21,29 @@ import LoginForm from '@/components/LoginForm';
   </header>
 
   {/* Login Form */}
-  <div class="flex-1">
-    <LoginForm client:load />
+  <div class="flex-1 flex items-center justify-center">
+    <SignIn appearance={{
+      layout: {
+        logoImageUrl: "/redLogo.svg",
+        socialButtonsPlacement: "bottom",
+      },
+      elements: {
+        rootBox: {
+          width: "30rem",
+          maxWidth: "30rem",
+        },
+        cardBox: {
+          width: "30rem",
+          maxWidth: "30rem",
+        },
+        card: {
+          width: "30rem",
+          maxWidth: "30rem",
+        },
+        formButtonPrimary: {
+          backgroundColor: "#c7413e",
+        },
+      },
+    }}/>
   </div>
 </div>

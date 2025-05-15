@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^8.1.4",
     "@clerk/themes": "^2.2.43",
     "@fontsource/kulim-park": "^5.2.5",
     "@fontsource/poppins": "^5.2.6",
