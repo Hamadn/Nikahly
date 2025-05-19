@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+import '@fontsource/kulim-park';
+import '@fontsource/poppins';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/whiteLogo.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <script src="https://kit.fontawesome.com/6c506c2359.js" crossorigin="anonymous"></script>
+    <title>Nikahly</title>
+  </head>
+
+  <body>
+    <header class="container py-4 px-6 flex justify-between items-center">
+        <a href="/" class="flex items-center">
+          <img src="/redLogo.svg" alt="logo" class="w-20" />
+        </a>
+
+        <div class="flex items-center gap-4">
+            <a href="/login" class="px-4 py-2 text-primary font-medium">Sign in</a>
+            <a
+              href="/signup"
+              class="px-4 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors"
+            >
+              Sign up
+            </a>
+        </div>
+
+    </header>
+    <slot />
+  </body>
+</html>

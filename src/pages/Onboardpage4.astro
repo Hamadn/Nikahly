@@ -1,0 +1,397 @@
+---
+import "../styles/global.css";
+import OnboardLayout from "../layouts/OnboardLayout.astro";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import CustomSelect from "../components/dropdownmenu.tsx";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+
+const handleSelectChange = (value: string, name: string) => {
+  console.log(`${name}: ${value}`);
+};
+
+const waliOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
+---
+
+<OnboardLayout>
+
+    <div class="maindiv py-32">
+
+        <div class="container flex justify-between items-center lg:max-w-6xl">
+            <h4 class="text-black text-sm font-semibold lg:text-lg text-wrap">Profile Setup</h4>
+            <img src="/welcome-uncle.svg" alt="uncle" class="hidden lg:block">
+            <h4 class="text-black text-sm font-semibold lg:text-lg text-wrap">Step 4 of 4</h4>
+        </div>
+
+        <div class="container lg:z-10 lg:mt-[-8rem] lg:max-w-6xl mx-auto relative bg-muted border rounded-xl p-4">
+            
+            <h4 class="text-center text-2xl lg:text-4xl font-bold p-4 uppercase text-primary">Sign Up</h4>
+
+            <div class="flex flex-col gap-12 p-4">
+
+                <p class="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">More About Me</p>
+
+                <div class="flex flex-wrap gap-6">
+                  <div class="flex-1 min-w-[200px]">
+                      <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">My hobbies, lifestyle, interests & skills</h6>
+                      <Textarea placeholder="Please provide your hobbies, lifestyle, interests & skills" className="h-20"/>
+                  </div>
+                </div>
+
+                <p class="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Dressing / Covering</p>
+
+                <div class="flex flex-wrap gap-6">
+                  <div class="flex-1 min-w-[200px]">
+                      <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">My dressing / covering preferences</h6>
+                      <Textarea placeholder="Please provide your dressing / covering preferences" className="h-20"/>
+                  </div>
+                </div>
+
+                <p class="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold"> Personality Traits</p>
+
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Select your personality traits</h6>
+
+                <div id="traits" class="flex flex-wrap gap-2 p-2 mt-5 justify-center items-center lg:justify-start">
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😂 Humorous
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😉 Playful
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🥰 Pure-hearted
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    ❤️ Loving
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🤪 Crazy
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    ⚠️ Cautious
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😡 Angry
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕵🏻 Analytical
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😜 Prankster
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🌹 Romantic
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕌 Hafidh
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😎 Confident
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧠 Sharp-minded
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    💗 Passionate
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    👶🏻 Loved by kids
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    👨🏻‍💼 Entrepreneur
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🥶 Cold
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🎯 Daring
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🗣️ Good Talker
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    💪🏻 Strong
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🤩 Uplifting
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😮 Dramatic
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    💎 Elegant
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🥳 Joyful
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧑🏻‍⚕️ Nurse
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    👾 Self Aware
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🗣️ Talkative
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🎯 Straightforward
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🐼 Panda
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    💌 Exotic
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🥇 Winner
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🌊 Flowing
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🦉 Wise
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    💫 Spiritual
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    👨🏻‍⚖️ Judge
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🥷🏻 Ninja
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🌼 Noble
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧑🏻‍🍳 Chef
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧑🏻‍🎨 Artist
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🥱 Exhausted
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    ☀️ Sunny
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧑🏻‍🏫 Teacher
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🌸 Delicate
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🦁 Brave
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🗼 Tall
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧑🏻‍🚒 Firefighter
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    😁 White Smile
+                  </p>
+                </div>
+
+
+                <p class="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Religious Traits</p>
+
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Select your religious traits</h6>
+
+
+
+                <div id="traits" class="flex flex-wrap gap-2 p-2 mt-5 justify-center items-center lg:justify-start">
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕋 Comitted Worshipper
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕌 Hafidh
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    📖 Reads Quran
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    👪 Family Oriented
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    ✌🏻 Peace Advocate 
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧑🏻‍🎓 Student of Knowledge
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕋 Performed Umrah
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕋 Performed Hajj
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🌍 Community Volunteer
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🧼 Tahara Concious
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    💡 Spiritual Learner                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🤲🏻 Dua
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    ☪️ Fast Observer
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕊️ Modest Values
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕌 Regular Masjid Visitor
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🌹 Halal Lifestyle Advocate
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🕌 Mosque Committee Member
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    📿 Zikr Lover
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    🎙️ Religious Speaker
+                  </p>
+      
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    📥 Fluent Arabic
+                  </p>
+
+                  <p class="text-primary text-md lg:text-xl border border-primary rounded-xl p-2 hover:bg-primary hover:text-white transition-all duration-100">
+                    📚 Hadith Enthusiast
+                  </p>
+      
+              </div>
+
+              <p class="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Wali Details</p>
+
+
+              <div class="flex flex-wrap gap-6">
+                <div class="flex-1 min-w-[200px]">
+                    <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Do you have a Wali?</h6>
+                    <CustomSelect client:load name="nationality" placeholder="Do you have a wali?" options={waliOptions} onChange={(value) => handleSelectChange(value, "wali")}/>
+                </div>
+
+                <div class="flex-1 min-w-[200px]">
+                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Wali Name</h6>
+                  <Input placeholder="Enter your wali name"/>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-6">
+                <div class="flex-1 min-w-[200px]">
+                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Wali Email</h6>
+                  <Input placeholder="Enter your wali email"/>
+                </div>
+
+                <div class="flex-1 min-w-[200px]">
+                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Wali Contact Number</h6>
+                  <Input placeholder="Enter your wali contact number"/>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-6">
+                <div class="flex-1 min-w-[200px]">
+                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Wali User ID</h6>
+                  <Input placeholder="Enter your wali user id"/>
+                </div>
+
+                <div class="flex-1 min-w-[200px]">
+                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Wali Username</h6>
+                  <Input placeholder="Enter your wali username"/>
+                </div>
+              </div>
+            </div>
+
+            <div id="btns" class="flex flex-col lg:flex-row gap-5 justify-between px-20 mt-20">
+                <button class="lg:px-16 lg:py-2 py-2 px-10 max-w-fit mx-auto bg-secondary border border-primary text-sm lg:text-lg text-primary rounded-xl font-semibold"><a href="/Onboardpage2">Back</a></button>
+                <button class="lg:px-16 lg:py-2 py-2 px-10 max-w-fit mx-auto bg-primary text-sm lg:text-lg text-secondary rounded-xl font-semibold"><a href="/">Sign Up</a></button>
+              </div>      
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4 justify-center">
+        <button class="lg:px-8 px-6 max-w-fit mx-auto mt-10 text-sm lg:text-lg text-primary rounded-xl font-medium border border-primary bg-transparent flex items-center gap-2"><a href="/">Back to Home</a></button>
+        <p class="text-center text-sm lg:text-lg text-primary font-medium">Already have an Account?<a href="/login" class="text-primary font-semibold"> Sign In</a> instead.</p>
+      </div>
+  
+</OnboardLayout>
