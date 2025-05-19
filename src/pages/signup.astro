@@ -23,6 +23,7 @@ import { SignUp } from "@clerk/astro/components";
   {/* Signup Form */}
   <div class="flex-1 flex items-center justify-center">
     <SignUp
+    signInForceRedirectUrl="/onboarding"
       appearance={{
         layout: {
           logoImageUrl: "/redLogo.svg",
