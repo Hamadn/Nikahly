@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import OnboardLayout from "../layouts/OnboardLayout.astro";
+import { Button } from "../components/ui/button";
+import OnboardingModal from "../components/OnboardingModal.astro";
+
+---
+
+<OnboardLayout>
+  <div class="container mx-auto py-20 text-center">
+    <h2 class="text-2xl font-bold mb-8">Redirecting to onboarding...</h2>
+    <p class="mb-8">If you are not redirected automatically, please click the button below:</p>
+    <Button id="redirect-btn" className="bg-primary text-white px-6 py-3 rounded-lg">Continue Onboarding</Button>
+    
+    <OnboardingModal />
+  </div>
+</OnboardLayout>
+
+<script>
+  // Automatically trigger the modal when this page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    // Set a small timeout to ensure everything is loaded
+    setTimeout(() => {
+      // Dispatch the event to open the modal with step 3 active
+      document.dispatchEvent(new CustomEvent('openOnboardingModalReact', { 
+        detail: { isOpen: true, activeTab: 'step3' } 
+      }));
+    }, 300);
+    
+    // Add click handler for the button
+    const redirectBtn = document.getElementById('redirect-btn');
+    if (redirectBtn) {
+      redirectBtn.addEventListener('click', () => {
+        document.dispatchEvent(new CustomEvent('openOnboardingModalReact', { 
+          detail: { isOpen: true, activeTab: 'step3' } 
+        }));
+      });
+    }
+  });
+</script>
