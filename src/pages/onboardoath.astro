@@ -1,0 +1,101 @@
+---
+import "../styles/global.css";
+import OnboardLayout from "../layouts/OnboardLayout.astro";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import OnboardingModal from "../components/OnboardingModal.astro";
+
+
+interface Hero115Props {
+  heading: string;
+  description: string;
+}
+
+const Hero115 = {
+  heading: "Welcome Aboard!",
+  description: "We're glad you're here! Let's get started. Kindly follow the onboarding process to create your profile and start matching with potential matches.",
+};
+---
+
+<OnboardLayout>
+  <section class="overflow-hidden py-32">
+    <div class="container">
+      <div class="flex flex-col gap-5">
+        <div class="relative flex flex-col gap-5">
+          <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl">
+            {Hero115.heading}
+          </h2>
+          <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
+            {Hero115.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pb-10">
+
+    <div class="hidden lg:flex lg:justify-between lg:items-center lg:max-w-4xl lg:mx-auto">
+      <img src="/welcome-uncle.svg" alt="welcome-uncle"/>
+      <img src="/welcome-aunty.svg" alt="welcome-aunty"/>
+    </div>
+
+    <div class="container">
+    <div class="lg:max-w-5xl mx-auto bg-muted border rounded-xl relative lg:z-10 mt-[-5rem] lg:mt-[-10rem] p-4">
+
+      <h4 class="text-center text-2xl lg:text-4xl font-bold p-4 uppercase text-primary">Sincerity Oath</h4>
+      <p class="text-center text-sm md:text-lg lg:text-xl text-primary text-wrap font-medium lg:p-20 p-4">
+        I sincerely affirm that I am creating this account solely for the purpose of seeking marriage in accordance with the teachings of 
+        the Qur'an and Sunnah. I pledge to act with sincerity and integrity, to respect the website’s terms of service, and to take full 
+        responsibility for my actions.
+      </p>
+
+      <div id="checkbox" class="flex justify-center items-center gap-4 border border-primary p-2 rounded-xl max-w-fit mx-auto">
+        <Checkbox client:load className="size-4 lg:size-6 border-primary"/>
+        <label for="checkbox" class="text-sm md:text-lg lg:text-xl text-primary text-wrap font-medium border-primary">I have read the oath and I commit to it</label>
+      </div>
+
+      <div id="btns" class="flex flex-col lg:flex-row gap-5 justify-between px-20 mt-20">
+        <Button id="register-male" className="lg:px-16 py-2 px-10 mx-auto bg-[#3E92C7] text-sm lg:text-lg text-secondary rounded-xl font-semibold uppercase">Register as Male</Button>
+        <Button id="register-female" className="lg:px-16 py-2 px-10 mx-auto bg-[#FD9A9A] text-sm lg:text-lg text-secondary rounded-xl font-semibold uppercase">Register as Female</Button>
+      </div>
+
+      <script>
+        // Client-side script to handle modal opening
+        document.addEventListener('DOMContentLoaded', () => {
+          const maleBtn = document.getElementById('register-male');
+          const femaleBtn = document.getElementById('register-female');
+          
+          if (maleBtn) {
+            maleBtn.addEventListener('click', () => {
+              // Store gender selection in localStorage or sessionStorage
+              localStorage.setItem('selectedGender', 'male');
+              // Open modal via custom event
+              window.dispatchEvent(new CustomEvent('openOnboardingModal'));
+            });
+          }
+          
+          if (femaleBtn) {
+            femaleBtn.addEventListener('click', () => {
+              // Store gender selection in localStorage or sessionStorage
+              localStorage.setItem('selectedGender', 'female');
+              // Open modal via custom event
+              window.dispatchEvent(new CustomEvent('openOnboardingModal'));
+            });
+          }
+        });
+      </script>
+
+      <OnboardingModal />
+    </div>
+    </div>
+
+  <div class="flex flex-col gap-4 justify-center">
+    <Button className="lg:px-8 px-6 max-w-fit mx-auto mt-10 text-sm lg:text-lg text-primary rounded-xl font-medium border border-primary bg-transparent flex items-center gap-2"><a href="/">Back to Home</a></Button>
+    <p class="text-center text-sm lg:text-lg text-primary font-medium">Already have an Account?<a href="/login" class="text-primary font-semibold"> Sign In</a> instead.</p>
+  </div>
+    </div>
+  
+</OnboardLayout>
+
+
