@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 import OnboardLayout from "../layouts/OnboardLayout.astro";
-import "@fontsource/kulim-park";
-import "@fontsource/poppins";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
+import OnboardingModal from "../components/OnboardingModal.astro";
+
 
 interface Hero115Props {
   heading: string;
@@ -39,7 +40,8 @@ const Hero115 = {
       <img src="/welcome-aunty.svg" alt="welcome-aunty"/>
     </div>
 
-    <div class="container lg:max-w-5xl mx-auto bg-muted border rounded-xl relative lg:z-10 mt-[-5rem] lg:mt-[-10rem] p-4">
+    <div class="container">
+    <div class="lg:max-w-5xl mx-auto bg-muted border rounded-xl relative lg:z-10 mt-[-5rem] lg:mt-[-10rem] p-4">
 
       <h4 class="text-center text-2xl lg:text-4xl font-bold p-4 uppercase text-primary">Sincerity Oath</h4>
       <p class="text-center text-sm md:text-lg lg:text-xl text-primary text-wrap font-medium lg:p-20 p-4">
@@ -49,21 +51,50 @@ const Hero115 = {
       </p>
 
       <div id="checkbox" class="flex justify-center items-center gap-4 border border-primary p-2 rounded-xl max-w-fit mx-auto">
-        <Checkbox className="size-4 lg:size-6 border-primary"/>
+        <Checkbox client:load className="size-4 lg:size-6 border-primary"/>
         <label for="checkbox" class="text-sm md:text-lg lg:text-xl text-primary text-wrap font-medium border-primary">I have read the oath and I commit to it</label>
       </div>
 
       <div id="btns" class="flex flex-col lg:flex-row gap-5 justify-between px-20 mt-20">
-        <button class="lg:px-16 lg:py-2 py-2 px-10 max-w-fit mx-auto bg-[#3E92C7] text-sm lg:text-lg text-secondary rounded-xl font-semibold uppercase"><a href="/Onboardpage2">Register as Male</a></button>
-        <button class="lg:px-16 lg:py-2 py-2 px-10 max-w-fit mx-auto bg-[#FD9A9A] text-sm lg:text-lg text-secondary rounded-xl font-semibold uppercase"><a href="/Onboardpage2">Register as Female</a></button>
+        <Button id="register-male" className="lg:px-16 py-2 px-10 mx-auto bg-[#3E92C7] text-sm lg:text-lg text-secondary rounded-xl font-semibold uppercase">Register as Male</Button>
+        <Button id="register-female" className="lg:px-16 py-2 px-10 mx-auto bg-[#FD9A9A] text-sm lg:text-lg text-secondary rounded-xl font-semibold uppercase">Register as Female</Button>
       </div>
+
+      <script>
+        // Client-side script to handle modal opening
+        document.addEventListener('DOMContentLoaded', () => {
+          const maleBtn = document.getElementById('register-male');
+          const femaleBtn = document.getElementById('register-female');
+          
+          if (maleBtn) {
+            maleBtn.addEventListener('click', () => {
+              // Store gender selection in localStorage or sessionStorage
+              localStorage.setItem('selectedGender', 'male');
+              // Open modal via custom event
+              window.dispatchEvent(new CustomEvent('openOnboardingModal'));
+            });
+          }
+          
+          if (femaleBtn) {
+            femaleBtn.addEventListener('click', () => {
+              // Store gender selection in localStorage or sessionStorage
+              localStorage.setItem('selectedGender', 'female');
+              // Open modal via custom event
+              window.dispatchEvent(new CustomEvent('openOnboardingModal'));
+            });
+          }
+        });
+      </script>
+
+      <OnboardingModal />
     </div>
-  </div>
+    </div>
 
   <div class="flex flex-col gap-4 justify-center">
-    <button class="lg:px-8 px-6 max-w-fit mx-auto mt-10 text-sm lg:text-lg text-primary rounded-xl font-medium border border-primary bg-transparent flex items-center gap-2"><a href="/">Back to Home</a></button>
+    <Button className="lg:px-8 px-6 max-w-fit mx-auto mt-10 text-sm lg:text-lg text-primary rounded-xl font-medium border border-primary bg-transparent flex items-center gap-2"><a href="/">Back to Home</a></Button>
     <p class="text-center text-sm lg:text-lg text-primary font-medium">Already have an Account?<a href="/login" class="text-primary font-semibold"> Sign In</a> instead.</p>
   </div>
+    </div>
   
 </OnboardLayout>
 
