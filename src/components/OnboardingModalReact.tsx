@@ -152,7 +152,7 @@ const OnboardingModalReact = () => {
         localStorage.setItem('onboardingFormData', JSON.stringify(formData));
         
         // Redirect to dashboard
-        window.location.href = "/dashboard";
+        window.location.href = "/index";
       } catch (error) {
         console.error('Error completing onboarding:', error);
         alert('There was an error completing your onboarding. Please try again.');

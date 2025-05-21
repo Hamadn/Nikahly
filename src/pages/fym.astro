@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import CustomSelect from "../components/dropdownmenu.tsx";
 
 const handleSelectChange = (value: string, name: string) => {
   console.log(`${name}: ${value}`);
@@ -44,7 +43,7 @@ interface Hero115Props {
 
 const Hero115 = {
   heading: "Find your match - the halal way!",
-  description: "We’re here to help you find the partner you’ve been praying for - a companion to complete half your faith and share a lifetime of love, trust, and purpose. Begin your journey with us today, where meaningful connections are built on shared values, sincerity, and hope for the future.",
+  description: "We're here to help you find the partner you've been praying for - a companion to complete half your faith and share a lifetime of love, trust, and purpose. Begin your journey with us today, where meaningful connections are built on shared values, sincerity, and hope for the future.",
 };
 ---
 
@@ -82,12 +81,34 @@ const Hero115 = {
 
               <div class="flex-1 min-w-[150px] text-wrap">
                   <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-                  <CustomSelect client:load name="nationality" placeholder="Select Nationality" options={nationalityOptions} onChange={(value) => handleSelectChange(value, "nationality")}/>
+                  <Select client:load onValueChange={(value) => handleSelectChange(value, "nationality")}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select Nationality" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {nationalityOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
               </div>
     
               <div class="flex-1 min-w-[150px] text-wrap">
                   <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
-                  <CustomSelect client:load name="residence" placeholder="Select Residence" options={residenceOptions} onChange={(value) => handleSelectChange(value, "residence")}/>
+                  <Select client:load onValueChange={(value) => handleSelectChange(value, "residence")}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select Residence" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {residenceOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
               </div>
             </div>
           </div>
@@ -95,13 +116,37 @@ const Hero115 = {
           <div class="flex flex-wrap gap-6">
             <div class="flex-1 min-w-[150px] text-wrap">
               <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
-              <CustomSelect client:load name="maritalStatus" placeholder="Select Marital Status" options={maritalStatusOptions} onChange={(value) => handleSelectChange(value, "maritalStatus")}/>
-          </div>
+              <Select client:load onValueChange={(value) => handleSelectChange(value, "maritalStatus")}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select Marital Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  {maritalStatusOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
   
-          <div class="flex-1 min-w-[150px] text-wrap">
+            <div class="flex-1 min-w-[150px] text-wrap">
               <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Age</h6>
-              <CustomSelect client:load name="age" placeholder="Select Age" options={ageOptions} onChange={(value) => handleSelectChange(value, "age")}/>
+              <Select client:load defaultValue="18" onValueChange={(value) => handleSelectChange(value, "age")}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select Age" />
+                </SelectTrigger>
+                <SelectContent>
+                  {ageOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
+        
         </div>
         
       </div>
