@@ -1,8 +1,8 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import CustomSelect from "../components/dropdownmenu.tsx";
+import CustomSelect from "../components/dropdownmenu";
+import { Button } from "@/components/ui/button";
 
 const handleSelectChange = (value: string, name: string) => {
   console.log(`${name}: ${value}`);
@@ -36,7 +36,116 @@ const ageOptions = Array.from({ length: 83 }, (_, i) => ({
   value: `${18 + i}`,
 }));
 
+const devotionOptions = [
+  { label: "Complete devotion", value: "complete devotion" },
+  { label: "Partial devotion", value: "partial devotion" },
+];
 
+const sectOptions = [
+  { label: "Sunni", value: "sunni" },
+  { label: "Shia", value: "shia" },
+];
+
+const revertOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
+const practicingSinceOptions = [
+  { label: "Birth", value: "birth" },
+  { label: "Other", value: "other" },
+];
+
+const prayerPatternOptions = [
+  { label: "Daily", value: "daily" },
+  { label: "Other", value: "other" },
+];
+
+const weightOptions = Array.from({ length: 121 }, (_, i) => ({
+  label: `${30 + i} kg`,
+  value: `${30 + i}`,
+}));
+
+const heightOptions = Array.from({ length: 81 }, (_, i) => ({
+  label: `${120 + i} cm`,
+  value: `${120 + i}`,
+}));
+
+const bodyTypeOptions = [
+  { label: "Slim", value: "slim" },
+  { label: "Average", value: "average" },
+  { label: "Athletic", value: "athletic" },
+  { label: "Heavy", value: "heavy" },
+];
+
+const beardOptions = [
+  { label: "Yes", value: "yes" },
+  { label: "No", value: "no" },
+];
+
+const skinColorOptions = [
+  { label: "Fair", value: "fair" },
+  { label: "Medium", value: "medium" },
+  { label: "Dark", value: "dark" },
+];
+
+const eyeColorOptions = [
+  { label: "Brown", value: "brown" },
+  { label: "Black", value: "black" },
+  { label: "Blue", value: "blue" },
+  { label: "Green", value: "green" },
+];
+
+const personalityTraits = [
+  { emoji: "😂", text: "Humorous" },
+  { emoji: "😉", text: "Playful" },
+  { emoji: "🥰", text: "Pure-hearted" },
+  { emoji: "❤️", text: "Loving" },
+  { emoji: "🤪", text: "Crazy" },
+  { emoji: "⚠️", text: "Cautious" },
+  { emoji: "😡", text: "Angry" },
+  { emoji: "🕵🏻", text: "Analytical" },
+  { emoji: "😜", text: "Prankster" },
+  { emoji: "🌹", text: "Romantic" },
+  { emoji: "🕌", text: "Hafidh" },
+  { emoji: "😎", text: "Confident" },
+  { emoji: "🧠", text: "Sharp-minded" },
+  { emoji: "💗", text: "Passionate" },
+  { emoji: "👶🏻", text: "Loved by kids" },
+  { emoji: "👨🏻‍💼", text: "Entrepreneur" },
+  { emoji: "🥶", text: "Cold" },
+  { emoji: "🎯", text: "Daring" },
+  { emoji: "🗣️", text: "Good Talker" },
+  { emoji: "💪🏻", text: "Strong" },
+  { emoji: "🤩", text: "Uplifting" },
+  { emoji: "😮", text: "Dramatic" },
+  { emoji: "💎", text: "Elegant" },
+  { emoji: "🥳", text: "Joyful" },
+  { emoji: "🧑🏻‍⚕️", text: "Nurse" },
+  { emoji: "👾", text: "Self Aware" },
+  { emoji: "🗣️", text: "Talkative" },
+  { emoji: "🎯", text: "Straightforward" },
+  { emoji: "🐼", text: "Panda" },
+  { emoji: "💌", text: "Exotic" },
+  { emoji: "🥇", text: "Winner" },
+  { emoji: "🌊", text: "Flowing" },
+  { emoji: "🦉", text: "Wise" },
+  { emoji: "💫", text: "Spiritual" },
+  { emoji: "👨🏻‍⚖️", text: "Judge" },
+];
+
+const selectedTraits: string[] = [];
+
+const toggleTrait = (trait: string) => {
+  const index = selectedTraits.indexOf(trait);
+  if (index === -1) {
+    selectedTraits.push(trait);
+  } else {
+    selectedTraits.splice(index, 1);
+  }
+};
+
+      
 interface Hero115Props {
   heading: string;
   description: string;
@@ -70,39 +179,120 @@ const Hero115 = {
 
       <div class="container">
 
-        <div class="mx-auto bg-muted border rounded-xl p-10 flex flex-col gap-10 mt-28">
+        <div class="mx-auto bg-muted border rounded-xl p-10 flex flex-col gap-10 mt-2 mb-2 lg:mt-28 lg:mb-28">
         
           <h3 class="text-center text-2xl lg:text-4xl font-bold p-4 uppercase text-primary text-wrap">Find Your Match - Search</h3>
-          
-          <div class="flex flex-col gap-6 mt-10">
 
-            <h4 class="text-left text-xl lg:text-2xl font-bold p-4 text-primary text-wrap">General Info</h4>
+          <h4 class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap">General Info</h4>
 
-            <div class="flex flex-wrap gap-6">
+          <div id="gen-infoform">
 
-              <div class="flex-1 min-w-[150px] text-wrap">
-                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-                  <CustomSelect client:load name="nationality" placeholder="Select Nationality" options={nationalityOptions} onChange={(value) => handleSelectChange(value, "nationality")}/>
+            <div class="flex flex-wrap gap-6 p-4">
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
+                <CustomSelect client:load name="nationality" placeholder="Nationality" options={nationalityOptions} onChange={(value) => handleSelectChange(value, "nationality")}/>
               </div>
-    
-              <div class="flex-1 min-w-[150px] text-wrap">
-                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
-                  <CustomSelect client:load name="residence" placeholder="Select Residence" options={residenceOptions} onChange={(value) => handleSelectChange(value, "residence")}/>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
+                <CustomSelect client:load name="maritalStatus" placeholder="Marital Status" options={maritalStatusOptions} onChange={(value) => handleSelectChange(value, "maritalStatus")}/>
+              </div>
+            </div>   
+
+            <div class="flex flex-wrap gap-6 p-4">
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
+                <CustomSelect client:load name="residence" placeholder="Residence" options={residenceOptions} onChange={(value) => handleSelectChange(value, "residence")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Age</h6>
+                <CustomSelect client:load name="age" placeholder="Age" options={ageOptions} onChange={(value) => handleSelectChange(value, "age")}/>
               </div>
             </div>
+
           </div>
-  
-          <div class="flex flex-wrap gap-6">
-            <div class="flex-1 min-w-[150px] text-wrap">
-              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
-              <CustomSelect client:load name="maritalStatus" placeholder="Select Marital Status" options={maritalStatusOptions} onChange={(value) => handleSelectChange(value, "maritalStatus")}/>
+
+          <div id="adv-infoform" class="hidden lg:block">
+
+            <h4 class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap">Health & Looks</h4>
+
+            <!-- ADVANCED SEARCH FEATURES -->
+            <div class="flex flex-wrap gap-6 p-4">
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Skin Color</h6>
+                <CustomSelect client:load name="skinColor" placeholder="Skin Color" options={skinColorOptions} onChange={(value) => handleSelectChange(value, "skinColor")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Eye Color</h6>
+                <CustomSelect client:load name="eyeColor" placeholder="Eye Color" options={eyeColorOptions} onChange={(value) => handleSelectChange(value, "eyeColor")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Body Type</h6>
+                <CustomSelect client:load name="bodyType" placeholder="Body Type" options={bodyTypeOptions} onChange={(value) => handleSelectChange(value, "bodyType")}/>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-6 p-4">
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Beard</h6>
+                <CustomSelect client:load name="beard" placeholder="Beard" options={beardOptions} onChange={(value) => handleSelectChange(value, "beard")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Height</h6>
+                <CustomSelect client:load name="height" placeholder="Height" options={heightOptions} onChange={(value) => handleSelectChange(value, "height")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Weight</h6>
+                <CustomSelect client:load name="weight" placeholder="Weight" options={weightOptions} onChange={(value) => handleSelectChange(value, "weight")}/>
+              </div>
+            </div>
+
+            <h4 class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap">Religion</h4>
+
+            <div class="flex flex-wrap gap-6 p-4">
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Devotion</h6>
+                <CustomSelect client:load name="devotion" placeholder="Devotion" options={devotionOptions} onChange={(value) => handleSelectChange(value, "devotion")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Sect</h6>
+                <CustomSelect client:load name="sect" placeholder="Sect" options={sectOptions} onChange={(value) => handleSelectChange(value, "sect")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Revert</h6>
+                <CustomSelect client:load name="revert" placeholder="Revert" options={revertOptions} onChange={(value) => handleSelectChange(value, "revert")}/>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-6 p-4">
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Practicing Since</h6>
+                <CustomSelect client:load name="practicingSince" placeholder="Practicing Since" options={practicingSinceOptions} onChange={(value) => handleSelectChange(value, "practicingSince")}/>
+              </div>
+
+              <div class="flex-1 min-w-[150px]">
+                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Prayer Pattern</h6>
+                <CustomSelect client:load name="prayerPattern" placeholder="Prayer Pattern" options={prayerPatternOptions} onChange={(value) => handleSelectChange(value, "prayerPattern")}/>
+              </div>
+            </div>
+            
           </div>
-  
-          <div class="flex-1 min-w-[150px] text-wrap">
-              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Age</h6>
-              <CustomSelect client:load name="age" placeholder="Select Age" options={ageOptions} onChange={(value) => handleSelectChange(value, "age")}/>
+          
+          <div id="btns" class="flex flex-col lg:flex-row lg:justify-between p-4 gap-6">
+            <Button className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase">Advanced</Button>
+            
+            <div class="flex gap-4 flex-col lg:flex-row">
+              <Button className="lg:px-16 py-2 px-10 bg-white text-primary border-primary border text-sm lg:text-lg rounded-xl font-semibold uppercase">Reset</Button>
+              <Button className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase">Search</Button>
+            </div>
           </div>
         </div>
-        
       </div>
 </Layout> 

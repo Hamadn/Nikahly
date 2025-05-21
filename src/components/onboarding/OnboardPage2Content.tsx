@@ -121,7 +121,7 @@ const OnboardPage2Content = () => {
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Nationality & Residence</p>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
           <CountryDropdown
             placeholder="Nationality"
@@ -131,7 +131,7 @@ const OnboardPage2Content = () => {
           />
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "residence")} 
@@ -150,7 +150,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">City</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "city")} 
@@ -172,7 +172,7 @@ const OnboardPage2Content = () => {
 
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Marital Status</p>
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "maritalStatus")} 
@@ -191,7 +191,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Age</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "age")} 
@@ -210,7 +210,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Child Count</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "childCount")} 
@@ -234,7 +234,7 @@ const OnboardPage2Content = () => {
 
       {/* First row */}
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Height</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "height")} 
@@ -253,7 +253,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Weight</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "weight")} 
@@ -272,7 +272,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Body Type</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "bodyType")} 
@@ -294,7 +294,7 @@ const OnboardPage2Content = () => {
 
       {/* Second row */}
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Beard</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "beard")} 
@@ -313,7 +313,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Eye Color</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "eyeColor")} 
@@ -332,7 +332,7 @@ const OnboardPage2Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Skin Color</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "skinColor")} 
