@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { OnboardingContext } from "../OnboardingModalReact";
-import CustomSelect from "../../components/dropdownmenu.tsx";
 import { Textarea } from "@/components/ui/textarea";
 
 // Options from the original onboardpage4.astro
@@ -83,7 +82,7 @@ const OnboardPage4Content = () => {
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">More About Me</p>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">My hobbies, lifestyle, interests & skills</h6>
           <Textarea 
             placeholder="Please provide your hobbies, lifestyle, interests & skills" 
@@ -97,7 +96,7 @@ const OnboardPage4Content = () => {
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Dressing / Covering</p>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">My dressing / covering preferences</h6>
           <Textarea 
             placeholder="Please provide your dressing / covering preferences" 

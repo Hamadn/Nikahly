@@ -52,7 +52,7 @@ const OnboardPage3Content = () => {
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">My Religion</p>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Devotion</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "devotion")} 
@@ -71,7 +71,7 @@ const OnboardPage3Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Sect</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "sect")} 
@@ -92,7 +92,7 @@ const OnboardPage3Content = () => {
       </div>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Revert</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "revert")} 
@@ -111,7 +111,7 @@ const OnboardPage3Content = () => {
           </Select>
         </div>
 
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Practicing Since</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "practicingSince")} 
@@ -132,7 +132,7 @@ const OnboardPage3Content = () => {
       </div>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Prayer Pattern</h6>
           <Select 
             onValueChange={(value) => handleSelectChange(value, "prayerPattern")} 
@@ -155,7 +155,7 @@ const OnboardPage3Content = () => {
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">My Education & Employment</p>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Education & Employment</h6>
           <Textarea 
             placeholder="Please provide your education and employment details" 
@@ -169,7 +169,7 @@ const OnboardPage3Content = () => {
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">My Ideal Partner</p>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">What would my ideal partner be like?</h6>
           <Textarea 
             placeholder="Please provide your ideal partner details" 
