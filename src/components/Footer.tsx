@@ -69,7 +69,7 @@ function Footer() {
               <a href="/guides" className="block transition-colors hover:text-primary">
                 Guides
               </a>
-              <a href="/contact" className="block transition-colors hover:text-primary">
+              <a href="/contactus" className="block transition-colors hover:text-primary">
                 Contact
               </a>
             </nav>
