@@ -18,6 +18,13 @@ const devotionOptions = [
 const sectOptions = [
   { label: "Sunni", value: "sunni" },
   { label: "Shia", value: "shia" },
+  { label: "Salafi", value: "salafi" },
+  { label: "Ahl Hadees", value: "ahl-hadees" },
+  { label: "Barelvi", value: "barelvi" },
+  { label: "Deobandi", value: "deobandi" },
+  { label: "Just Muslim", value: "just-muslim" },
+  { label: "Prefer not to say", value: "prefer not to say" },
+  { label: "Other", value: "other" },
 ];
 
 const revertOptions = [
@@ -31,8 +38,11 @@ const practicingSinceOptions = [
 ];
 
 const prayerPatternOptions = [
-  { label: "Daily", value: "daily" },
-  { label: "Other", value: "other" },
+  { label: "Always", value: "always" },
+  { label: "Most of the time", value: "most of the time" },
+  { label: "Sometimes", value: "sometimes" },
+  { label: "Rarely", value: "rarely" },
+  { label: "Never", value: "never" },
 ];
 
 const OnboardPage3Content = () => {

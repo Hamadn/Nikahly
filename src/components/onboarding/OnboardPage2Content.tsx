@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/select";
 import { CountryDropdown } from "../ui/country-dropdown";
 
-// Options arrays from the original onboardpage2.astro
 const nationalityOptions = [
   { label: "Pakistani", value: "pakistani" },
   { label: "Indian", value: "indian" },
@@ -37,9 +36,14 @@ const cityOptions = [
 
 const maritalStatusOptions = [
   { label: "Single", value: "single" },
-  { label: "Married", value: "married" },
+  { label: "Engaged", value: "engaged" },
+  { label: "Married (Monogamous)", value: "married" },
+  { label: "Married (Polygamous)", value: "married" },
   { label: "Divorced", value: "divorced" },
   { label: "Widowed", value: "widowed" },
+  { label: "Seeking Polygyny", value: "seeking polygyny" },
+  { label: "Annulled", value: "annulled" },
+  { label: "Prefer not to say", value: "prefer not to say" },
 ];
 
 const ageOptions = Array.from({ length: 83 }, (_, i) => ({
@@ -67,10 +71,18 @@ const heightOptions = Array.from({ length: 81 }, (_, i) => ({
 }));
 
 const bodyTypeOptions = [
+  { label: "Skinny", value: "skinny" },
   { label: "Slim", value: "slim" },
   { label: "Average", value: "average" },
   { label: "Athletic", value: "athletic" },
   { label: "Heavy", value: "heavy" },
+  { label: "Bulky", value: "bulky" },
+  { label: "Thick", value: "thick" },
+  { label: "Curvy", value: "curvy" },
+  { label: "Chubby", value: "chubby" },
+  { label: "Muscular", value: "muscular" },
+  { label: "Prefer not to say", value: "prefer not to say" },
+  { label: "Other", value: "other" },
 ];
 
 const beardOptions = [

@@ -26,9 +26,14 @@ const residenceOptions = [
 
 const maritalStatusOptions = [
   { label: "Single", value: "single" },
-  { label: "Married", value: "married" },
+  { label: "Engaged", value: "engaged" },
+  { label: "Married (Monogamous)", value: "married" },
+  { label: "Married (Polygamous)", value: "married" },
   { label: "Divorced", value: "divorced" },
   { label: "Widowed", value: "widowed" },
+  { label: "Seeking Polygyny", value: "seeking polygyny" },
+  { label: "Annulled", value: "annulled" },
+  { label: "Prefer not to say", value: "prefer not to say" },
 ];
 
 const ageOptions = Array.from({ length: 83 }, (_, i) => ({
@@ -39,11 +44,20 @@ const ageOptions = Array.from({ length: 83 }, (_, i) => ({
 const devotionOptions = [
   { label: "Complete devotion", value: "complete devotion" },
   { label: "Partial devotion", value: "partial devotion" },
+  { label: "No Devotion", value: "no devotion" },
+  { label: "Prefer not to say", value: "prefer not to say" },
 ];
 
 const sectOptions = [
   { label: "Sunni", value: "sunni" },
   { label: "Shia", value: "shia" },
+  { label: "Salafi", value: "salafi" },
+  { label: "Ahl Hadees", value: "ahl-hadees" },
+  { label: "Barelvi", value: "barelvi" },
+  { label: "Deobandi", value: "deobandi" },
+  { label: "Just Muslim", value: "just-muslim" },
+  { label: "Prefer not to say", value: "prefer not to say" },
+  { label: "Other", value: "other" },
 ];
 
 const revertOptions = [
@@ -57,8 +71,11 @@ const practicingSinceOptions = [
 ];
 
 const prayerPatternOptions = [
-  { label: "Daily", value: "daily" },
-  { label: "Other", value: "other" },
+  { label: "Always", value: "always" },
+  { label: "Most of the time", value: "most of the time" },
+  { label: "Sometimes", value: "sometimes" },
+  { label: "Rarely", value: "rarely" },
+  { label: "Never", value: "never" },
 ];
 
 const weightOptions = Array.from({ length: 121 }, (_, i) => ({
@@ -72,10 +89,18 @@ const heightOptions = Array.from({ length: 81 }, (_, i) => ({
 }));
 
 const bodyTypeOptions = [
+  { label: "Skinny", value: "skinny" },
   { label: "Slim", value: "slim" },
   { label: "Average", value: "average" },
   { label: "Athletic", value: "athletic" },
   { label: "Heavy", value: "heavy" },
+  { label: "Bulky", value: "bulky" },
+  { label: "Thick", value: "thick" },
+  { label: "Curvy", value: "curvy" },
+  { label: "Chubby", value: "chubby" },
+  { label: "Muscular", value: "muscular" },
+  { label: "Prefer not to say", value: "prefer not to say" },
+  { label: "Other", value: "other" },
 ];
 
 const beardOptions = [
@@ -84,9 +109,11 @@ const beardOptions = [
 ];
 
 const skinColorOptions = [
+  { label: "White", value: "white" },
   { label: "Fair", value: "fair" },
   { label: "Medium", value: "medium" },
-  { label: "Dark", value: "dark" },
+  { label: "Brown", value: "brown" },
+  { label: "Black", value: "black" },
 ];
 
 const eyeColorOptions = [
@@ -94,44 +121,8 @@ const eyeColorOptions = [
   { label: "Black", value: "black" },
   { label: "Blue", value: "blue" },
   { label: "Green", value: "green" },
-];
-
-const personalityTraits = [
-  { emoji: "😂", text: "Humorous" },
-  { emoji: "😉", text: "Playful" },
-  { emoji: "🥰", text: "Pure-hearted" },
-  { emoji: "❤️", text: "Loving" },
-  { emoji: "🤪", text: "Crazy" },
-  { emoji: "⚠️", text: "Cautious" },
-  { emoji: "😡", text: "Angry" },
-  { emoji: "🕵🏻", text: "Analytical" },
-  { emoji: "😜", text: "Prankster" },
-  { emoji: "🌹", text: "Romantic" },
-  { emoji: "🕌", text: "Hafidh" },
-  { emoji: "😎", text: "Confident" },
-  { emoji: "🧠", text: "Sharp-minded" },
-  { emoji: "💗", text: "Passionate" },
-  { emoji: "👶🏻", text: "Loved by kids" },
-  { emoji: "👨🏻‍💼", text: "Entrepreneur" },
-  { emoji: "🥶", text: "Cold" },
-  { emoji: "🎯", text: "Daring" },
-  { emoji: "🗣️", text: "Good Talker" },
-  { emoji: "💪🏻", text: "Strong" },
-  { emoji: "🤩", text: "Uplifting" },
-  { emoji: "😮", text: "Dramatic" },
-  { emoji: "💎", text: "Elegant" },
-  { emoji: "🥳", text: "Joyful" },
-  { emoji: "🧑🏻‍⚕️", text: "Nurse" },
-  { emoji: "👾", text: "Self Aware" },
-  { emoji: "🗣️", text: "Talkative" },
-  { emoji: "🎯", text: "Straightforward" },
-  { emoji: "🐼", text: "Panda" },
-  { emoji: "💌", text: "Exotic" },
-  { emoji: "🥇", text: "Winner" },
-  { emoji: "🌊", text: "Flowing" },
-  { emoji: "🦉", text: "Wise" },
-  { emoji: "💫", text: "Spiritual" },
-  { emoji: "👨🏻‍⚖️", text: "Judge" },
+  { label: "Gray", value: "gray" },
+  { label: "Other", value: "other" },
 ];
 
 const selectedTraits: string[] = [];
