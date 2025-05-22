@@ -72,6 +72,9 @@ function Footer() {
               <a href="/contactus" className="block transition-colors hover:text-primary">
                 Contact
               </a>
+              <a href="/dashboard" className="block transition-colors hover:text-primary">
+                Dashboard
+              </a>
             </nav>
           </div>
           <div>
