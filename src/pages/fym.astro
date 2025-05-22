@@ -1,8 +1,8 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { SelectWrapper } from "../components/SelectWrapper";
 
 const handleSelectChange = (value: string, name: string) => {
   console.log(`${name}: ${value}`);
@@ -181,45 +181,47 @@ const Hero115 = {
             <div class="flex flex-wrap gap-6 p-4">
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-                <CustomSelect client:load name="nationality" placeholder="Nationality" options={nationalityOptions} onChange={(value) => handleSelectChange(value, "nationality")}/>
+                <SelectWrapper 
+                  client:load 
+                  name="nationality" 
+                  placeholder="Select Nationality" 
+                  options={nationalityOptions} 
+                  onChange={(value) => handleSelectChange(value, "nationality")}
+                />
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
-                <CustomSelect client:load name="maritalStatus" placeholder="Marital Status" options={maritalStatusOptions} onChange={(value) => handleSelectChange(value, "maritalStatus")}/>
+                <SelectWrapper 
+                  client:load 
+                  name="maritalStatus" 
+                  placeholder="Select Marital Status" 
+                  options={maritalStatusOptions} 
+                  onChange={(value) => handleSelectChange(value, "maritalStatus")}
+                />
               </div>
             </div>   
             
               <div class="flex-1 min-w-[150px] text-wrap">
                   <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-                  <Select client:load onValueChange={(value) => handleSelectChange(value, "nationality")}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select Nationality" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {nationalityOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <SelectWrapper 
+                    client:load 
+                    name="nationality" 
+                    placeholder="Select Nationality" 
+                    options={nationalityOptions} 
+                    onChange={(value) => handleSelectChange(value, "nationality")}
+                  />
               </div>
     
               <div class="flex-1 min-w-[150px] text-wrap">
                   <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
-                  <Select client:load onValueChange={(value) => handleSelectChange(value, "residence")}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select Residence" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {residenceOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <SelectWrapper 
+                    client:load 
+                    name="residence" 
+                    placeholder="Select Residence" 
+                    options={residenceOptions} 
+                    onChange={(value) => handleSelectChange(value, "residence")}
+                  />
               </div>
             </div>
 
@@ -227,34 +229,25 @@ const Hero115 = {
           <div class="flex flex-wrap gap-6">
             <div class="flex-1 min-w-[150px] text-wrap">
               <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
-              <Select client:load onValueChange={(value) => handleSelectChange(value, "maritalStatus")}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Marital Status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {maritalStatusOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SelectWrapper 
+                client:load 
+                name="maritalStatus" 
+                placeholder="Select Marital Status" 
+                options={maritalStatusOptions} 
+                onChange={(value) => handleSelectChange(value, "maritalStatus")}
+              />
             </div>
   
             <div class="flex-1 min-w-[150px] text-wrap">
               <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Age</h6>
-              <Select client:load defaultValue="18" onValueChange={(value) => handleSelectChange(value, "age")}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Age" />
-                </SelectTrigger>
-                <SelectContent>
-                  {ageOptions.map((option) => (
-                    <SelectItem key={option.value} value={option.value}>
-                      {option.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <SelectWrapper 
+                client:load 
+                name="age" 
+                placeholder="Select Age" 
+                options={ageOptions} 
+                defaultValue="18"
+                onChange={(value) => handleSelectChange(value, "age")}
+              />
               
           <div id="adv-infoform" class="hidden lg:block">
 
@@ -264,34 +257,52 @@ const Hero115 = {
             <div class="flex flex-wrap gap-6 p-4">
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Skin Color</h6>
-                <CustomSelect client:load name="skinColor" placeholder="Skin Color" options={skinColorOptions} onChange={(value) => handleSelectChange(value, "skinColor")}/>
+                <SelectWrapper 
+                  client:load 
+                  name="skinColor" 
+                  placeholder="Select Skin Color" 
+                  options={skinColorOptions} 
+                  onChange={(value) => handleSelectChange(value, "skinColor")}
+                />
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Eye Color</h6>
-                <CustomSelect client:load name="eyeColor" placeholder="Eye Color" options={eyeColorOptions} onChange={(value) => handleSelectChange(value, "eyeColor")}/>
+                <SelectWrapper 
+                  client:load 
+                  name="eyeColor" 
+                  placeholder="Select Eye Color" 
+                  options={eyeColorOptions} 
+                  onChange={(value) => handleSelectChange(value, "eyeColor")}
+                />
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Body Type</h6>
-                <CustomSelect client:load name="bodyType" placeholder="Body Type" options={bodyTypeOptions} onChange={(value) => handleSelectChange(value, "bodyType")}/>
+                <SelectWrapper 
+                  client:load 
+                  name="bodyType" 
+                  placeholder="Body Type" 
+                  options={bodyTypeOptions} 
+                  onChange={(value) => handleSelectChange(value, "bodyType")}
+                />
               </div>
             </div>
             
             <div class="flex flex-wrap gap-6 p-4">
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Beard</h6>
-                <CustomSelect client:load name="beard" placeholder="Beard" options={beardOptions} onChange={(value) => handleSelectChange(value, "beard")}/>
+                <SelectWrapper client:load name="beard" placeholder="Beard" options={beardOptions} onChange={(value) => handleSelectChange(value, "beard")}/>
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Height</h6>
-                <CustomSelect client:load name="height" placeholder="Height" options={heightOptions} onChange={(value) => handleSelectChange(value, "height")}/>
+                <SelectWrapper client:load name="height" placeholder="Height" options={heightOptions} onChange={(value) => handleSelectChange(value, "height")}/>
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Weight</h6>
-                <CustomSelect client:load name="weight" placeholder="Weight" options={weightOptions} onChange={(value) => handleSelectChange(value, "weight")}/>
+                <SelectWrapper client:load name="weight" placeholder="Weight" options={weightOptions} onChange={(value) => handleSelectChange(value, "weight")}/>
               </div>
             </div>
 
@@ -300,29 +311,29 @@ const Hero115 = {
             <div class="flex flex-wrap gap-6 p-4">
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Devotion</h6>
-                <CustomSelect client:load name="devotion" placeholder="Devotion" options={devotionOptions} onChange={(value) => handleSelectChange(value, "devotion")}/>
+                <SelectWrapper client:load name="devotion" placeholder="Devotion" options={devotionOptions} onChange={(value) => handleSelectChange(value, "devotion")}/>
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Sect</h6>
-                <CustomSelect client:load name="sect" placeholder="Sect" options={sectOptions} onChange={(value) => handleSelectChange(value, "sect")}/>
+                <SelectWrapper client:load name="sect" placeholder="Sect" options={sectOptions} onChange={(value) => handleSelectChange(value, "sect")}/>
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Revert</h6>
-                <CustomSelect client:load name="revert" placeholder="Revert" options={revertOptions} onChange={(value) => handleSelectChange(value, "revert")}/>
+                <SelectWrapper client:load name="revert" placeholder="Revert" options={revertOptions} onChange={(value) => handleSelectChange(value, "revert")}/>
               </div>
             </div>
 
             <div class="flex flex-wrap gap-6 p-4">
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Practicing Since</h6>
-                <CustomSelect client:load name="practicingSince" placeholder="Practicing Since" options={practicingSinceOptions} onChange={(value) => handleSelectChange(value, "practicingSince")}/>
+                <SelectWrapper client:load name="practicingSince" placeholder="Practicing Since" options={practicingSinceOptions} onChange={(value) => handleSelectChange(value, "practicingSince")}/>
               </div>
 
               <div class="flex-1 min-w-[150px]">
                 <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Prayer Pattern</h6>
-                <CustomSelect client:load name="prayerPattern" placeholder="Prayer Pattern" options={prayerPatternOptions} onChange={(value) => handleSelectChange(value, "prayerPattern")}/>
+                <SelectWrapper client:load name="prayerPattern" placeholder="Prayer Pattern" options={prayerPatternOptions} onChange={(value) => handleSelectChange(value, "prayerPattern")}/>
               </div>
             </div>
             
