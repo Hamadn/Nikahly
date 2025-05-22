@@ -6,115 +6,107 @@ import "@fontsource/poppins";
 import { Button } from "@/components/ui/button";
 
 
-interface Hero115Props {
-  heading: string;
-  description: string;
-}
-
-const Hero115 = {
-  heading: "Contact Us",
-  description: "Any questions? We're here to help! Fill the form below and we'll get back to you as soon as possible.",
-};
 ---
 
 <Layout>
-
-    <section class="overflow-hidden py-24">
-        <div class="container">
-          <div class="relative w-full flex flex-col gap-5">
-            <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl">
-              {Hero115.heading}
-            </h2>
-            <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
-              {Hero115.description}
+    <div class="flex items-center min-h-screen">
+      <div class="container mx-auto">
+        <div class="max-w-md mx-auto my-10 bg-muted p-5 rounded-md shadow-sm">
+          <div class="text-center">
+            <h1 class="my-3 text-3xl font-semibold text-primary">
+              Contact Us
+            </h1>
+            <p class="text-muted-foreground">
+              Fill up the form below to send us a message.
             </p>
           </div>
-        </div>
-    </section>
+          <div class="m-7">
+            <form action="https://api.web3forms.com/submit" method="POST" id="form">
+              <input type="hidden" name="access_key" value={process.env.ACCESSKEY_WEB3FORMS} />
+              <input type="hidden" name="subject" value="New Submission from Web3Forms" />
+              <input type="checkbox" name="botcheck" id="" style="display: none;" />
     
-    <form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation container mx-auto pt-10 pb-10" data-astro-reload novalidate>
-        <!-- Add your Web3Forms Access Key -->
-        <input type="hidden" name="access_key" value="ce84b314-7565-4f35-8a4b-6641fbbc2278" />
-        <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
-        
-        <div class="mb-5">
-            <input type="text" placeholder="Full Name" required class="w-full text-primary px-4 py-3 border placeholder:text-muted-foreground rounded-md outline-none focus:ring-2 focus:border-primary ring-secondary" name="name"/>
-            <div class="hidden text-primary text-sm mt-1">
-                Please provide your full name.
-            </div>
+              <div class="mb-6">
+                <label for="name" class="block mb-2 text-sm text-primary">Full Name</label>
+                <input type="text" name="name" id="name" placeholder="Full Name" required class="w-full px-3 py-2 placeholder-muted-foreground border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 text-black" />
+              </div>
+              <div class="mb-6">
+                <label for="email" class="block mb-2 text-sm text-primary">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="Email Address" required class="w-full px-3 py-2 placeholder-muted-foreground border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 text-black" />
+              </div>
+              <div class="mb-6">
+                <label for="message" class="block mb-2 text-sm text-primary">Your Message</label>
+    
+                <textarea rows="5" name="message" id="message" placeholder="Your Message" class="w-full px-3 py-2 placeholder-muted-foreground border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 text-black" required></textarea>
+              </div>
+              <div class="mb-6">
+                <Button type="submit" className="w-full px-3 py-4 bg-gradient-to-b from-gradient-start to-gradient-end rounded-md focus:bg-gradient-to-b focus:outline-none text-white">
+                  Send Message
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
-        
-        <div class="mb-5">
-            <label for="email_address" class="sr-only">Email Address</label><input id="email_address" type="email" placeholder="Email Address" name="email" required class="w-full text-primary px-4 py-3 border placeholder:text-muted-foreground rounded-md outline-none focus:ring-2 focus:border-primary ring-secondary"/>
-            <div class="hidden text-primary text-sm mt-1">Please provide your email address.</div>
-            <div class="hidden text-primary text-sm mt-1">Please provide a valid email address.</div>
-        </div>
-        
-        <div class="mb-3">
-            <textarea name="message" required placeholder="Your Message" class="w-full text-primary px-4 py-3 border placeholder:text-muted-foreground rounded-md outline-none h-36 focus:ring-2 focus:border-primary ring-secondary"></textarea>
-            <div class="hidden text-primary text-sm mt-1">Please enter your message.</div>
-        </div>
-        
-        <Button type="submit" className="w-full">Send Message</Button>
-        <div id="result" class="mt-3 text-center"></div>
-    </form>
+      </div>
+    </div>
 
-    <script is:inline>
-
-        // use astro:page-load event if you are using View Transitions
-      
-        document.addEventListener("DOMContentLoaded", () => {
-        
-            const form = document.getElementById("form");
-            const result = document.getElementById("result");
-      
-            form.addEventListener("submit", function (e) {
-              e.preventDefault();
-              form.classList.add("was-validated");
-              if (!form.checkValidity()) {
-                form.querySelectorAll(":invalid")[0].focus();
-                return;
-              }
-              const formData = new FormData(form);
-              const object = Object.fromEntries(formData);
-              const json = JSON.stringify(object);
-      
-              result.innerHTML = "Sending...";
-      
-              fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: json,
-              })
-                .then(async (response) => {
-                  let json = await response.json();
-                  if (response.status == 200) {
-                    result.classList.add("text-green-500");
-                    result.innerHTML = json.message;
-                  } else {
-                    console.log(response);
-                    result.classList.add("text-red-500");
-                    result.innerHTML = json.message;
-                  }
-                })
-                .catch((error) => {
-                  console.log(error);
-                  result.innerHTML = "Something went wrong!";
-                })
-                .then(function () {
-                  form.reset();
-                  form.classList.remove("was-validated");
-                  setTimeout(() => {
-                    result.style.display = "none";
-                  }, 5000);
-                });
-            });
-          },
-          { once: true },
-        );
-      </script>
-
+    
 </Layout>
+
+<script is:inline>
+
+  // use astro:page-load event if you are using View Transitions
+
+  document.addEventListener("DOMContentLoaded", () => {
+  
+      const form = document.getElementById("form");
+      const result = document.getElementById("result");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.classList.add("was-validated");
+        if (!form.checkValidity()) {
+          form.querySelectorAll(":invalid")[0].focus();
+          return;
+        }
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        result.innerHTML = "Sending...";
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: json,
+        })
+          .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+              result.classList.add("text-green-500");
+              result.innerHTML = json.message;
+            } else {
+              console.log(response);
+              result.classList.add("text-red-500");
+              result.innerHTML = json.message;
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+          })
+          .then(function () {
+            form.reset();
+            form.classList.remove("was-validated");
+            setTimeout(() => {
+              result.style.display = "none";
+            }, 5000);
+          });
+      });
+    },
+    { once: true },
+  );
+</script>
