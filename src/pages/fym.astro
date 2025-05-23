@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { SelectWrapper } from "../components/SelectWrapper";
+import { clerkClient } from "@clerk/astro/server";
 
 const handleSelectChange = (value: string, name: string) => {
   console.log(`${name}: ${value}`);
@@ -136,7 +137,6 @@ const toggleTrait = (trait: string) => {
   }
 };
 
-      
 interface Hero115Props {
   heading: string;
   description: string;
@@ -144,210 +144,315 @@ interface Hero115Props {
 
 const Hero115 = {
   heading: "Find your match - the halal way!",
-  description: "We're here to help you find the partner you've been praying for - a companion to complete half your faith and share a lifetime of love, trust, and purpose. Begin your journey with us today, where meaningful connections are built on shared values, sincerity, and hope for the future.",
+  description:
+    "We're here to help you find the partner you've been praying for - a companion to complete half your faith and share a lifetime of love, trust, and purpose. Begin your journey with us today, where meaningful connections are built on shared values, sincerity, and hope for the future.",
 };
 ---
 
 <Layout>
-
-    <section class="overflow-hidden py-32">
-        <div class="container">
-          <div class="flex flex-col gap-5">
-            <div class="relative flex flex-col gap-5">
-              <h2 class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl">
-                {Hero115.heading}
-              </h2>
-              <p class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg">
-                {Hero115.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <img src="/fym-mainimg.svg" alt="fym" class="hidden lg:block lg:absolute lg:z-10 lg:w-80 lg:h-96 lg:top-80 lg:right-0 lg:left-0 lg:mx-auto lg:mt-10"/>
-
-
-      <div class="container">
-
-        <div class="mx-auto bg-muted border rounded-xl p-10 flex flex-col gap-10 mt-2 mb-2 lg:mt-28 lg:mb-28">
-        
-          <h3 class="text-center text-2xl lg:text-4xl font-bold p-4 uppercase text-primary text-wrap">Find Your Match - Search</h3>
-
-          <h4 class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap">General Info</h4>
-
-          <div id="gen-infoform">
-
-            <div class="flex flex-wrap gap-6 p-4">
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-                <SelectWrapper 
-                  client:load 
-                  name="nationality" 
-                  placeholder="Select Nationality" 
-                  options={nationalityOptions} 
-                  onChange={(value) => handleSelectChange(value, "nationality")}
-                />
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
-                <SelectWrapper 
-                  client:load 
-                  name="maritalStatus" 
-                  placeholder="Select Marital Status" 
-                  options={maritalStatusOptions} 
-                  onChange={(value) => handleSelectChange(value, "maritalStatus")}
-                />
-              </div>
-            </div>   
-            
-              <div class="flex-1 min-w-[150px] text-wrap">
-                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-                  <SelectWrapper 
-                    client:load 
-                    name="nationality" 
-                    placeholder="Select Nationality" 
-                    options={nationalityOptions} 
-                    onChange={(value) => handleSelectChange(value, "nationality")}
-                  />
-              </div>
-    
-              <div class="flex-1 min-w-[150px] text-wrap">
-                  <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
-                  <SelectWrapper 
-                    client:load 
-                    name="residence" 
-                    placeholder="Select Residence" 
-                    options={residenceOptions} 
-                    onChange={(value) => handleSelectChange(value, "residence")}
-                  />
-              </div>
-            </div>
-
-          </div>
-          <div class="flex flex-wrap gap-6">
-            <div class="flex-1 min-w-[150px] text-wrap">
-              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Marital Status</h6>
-              <SelectWrapper 
-                client:load 
-                name="maritalStatus" 
-                placeholder="Select Marital Status" 
-                options={maritalStatusOptions} 
-                onChange={(value) => handleSelectChange(value, "maritalStatus")}
-              />
-            </div>
-  
-            <div class="flex-1 min-w-[150px] text-wrap">
-              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Age</h6>
-              <SelectWrapper 
-                client:load 
-                name="age" 
-                placeholder="Select Age" 
-                options={ageOptions} 
-                defaultValue="18"
-                onChange={(value) => handleSelectChange(value, "age")}
-              />
-              
-          <div id="adv-infoform" class="hidden lg:block">
-
-            <h4 class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap">Health & Looks</h4>
-
-            <!-- ADVANCED SEARCH FEATURES -->
-            <div class="flex flex-wrap gap-6 p-4">
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Skin Color</h6>
-                <SelectWrapper 
-                  client:load 
-                  name="skinColor" 
-                  placeholder="Select Skin Color" 
-                  options={skinColorOptions} 
-                  onChange={(value) => handleSelectChange(value, "skinColor")}
-                />
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Eye Color</h6>
-                <SelectWrapper 
-                  client:load 
-                  name="eyeColor" 
-                  placeholder="Select Eye Color" 
-                  options={eyeColorOptions} 
-                  onChange={(value) => handleSelectChange(value, "eyeColor")}
-                />
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Body Type</h6>
-                <SelectWrapper 
-                  client:load 
-                  name="bodyType" 
-                  placeholder="Body Type" 
-                  options={bodyTypeOptions} 
-                  onChange={(value) => handleSelectChange(value, "bodyType")}
-                />
-              </div>
-            </div>
-            
-            <div class="flex flex-wrap gap-6 p-4">
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Beard</h6>
-                <SelectWrapper client:load name="beard" placeholder="Beard" options={beardOptions} onChange={(value) => handleSelectChange(value, "beard")}/>
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Height</h6>
-                <SelectWrapper client:load name="height" placeholder="Height" options={heightOptions} onChange={(value) => handleSelectChange(value, "height")}/>
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Weight</h6>
-                <SelectWrapper client:load name="weight" placeholder="Weight" options={weightOptions} onChange={(value) => handleSelectChange(value, "weight")}/>
-              </div>
-            </div>
-
-            <h4 class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap">Religion</h4>
-
-            <div class="flex flex-wrap gap-6 p-4">
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Devotion</h6>
-                <SelectWrapper client:load name="devotion" placeholder="Devotion" options={devotionOptions} onChange={(value) => handleSelectChange(value, "devotion")}/>
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Sect</h6>
-                <SelectWrapper client:load name="sect" placeholder="Sect" options={sectOptions} onChange={(value) => handleSelectChange(value, "sect")}/>
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Revert</h6>
-                <SelectWrapper client:load name="revert" placeholder="Revert" options={revertOptions} onChange={(value) => handleSelectChange(value, "revert")}/>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-6 p-4">
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Practicing Since</h6>
-                <SelectWrapper client:load name="practicingSince" placeholder="Practicing Since" options={practicingSinceOptions} onChange={(value) => handleSelectChange(value, "practicingSince")}/>
-              </div>
-
-              <div class="flex-1 min-w-[150px]">
-                <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">Prayer Pattern</h6>
-                <SelectWrapper client:load name="prayerPattern" placeholder="Prayer Pattern" options={prayerPatternOptions} onChange={(value) => handleSelectChange(value, "prayerPattern")}/>
-              </div>
-            </div>
-            
-          </div>
-          
-          <div id="btns" class="flex flex-col lg:flex-row lg:justify-between p-4 gap-6">
-            <Button className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase">Advanced</Button>
-            
-            <div class="flex gap-4 flex-col lg:flex-row">
-              <Button className="lg:px-16 py-2 px-10 bg-white text-primary border-primary border text-sm lg:text-lg rounded-xl font-semibold uppercase">Reset</Button>
-              <Button className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase">Search</Button>
-            </div>
-          </div>
-        
+  <section class="overflow-hidden py-32">
+    <div class="container">
+      <div class="flex flex-col gap-5">
+        <div class="relative flex flex-col gap-5">
+          <h2
+            class="mx-auto max-w-screen-2xl uppercase text-center text-primary text-3xl font-bold md:text-5xl"
+          >
+            {Hero115.heading}
+          </h2>
+          <p
+            class="mx-auto mt-2 md:mt-4 max-w-screen-xl text-center text-muted-foreground md:text-lg"
+          >
+            {Hero115.description}
+          </p>
         </div>
       </div>
-</Layout> 
+    </div>
+  </section>
+
+  <img
+    src="/fym-mainimg.svg"
+    alt="fym"
+    class="hidden lg:block lg:absolute lg:z-10 lg:w-80 lg:h-96 lg:top-80 lg:right-0 lg:left-0 lg:mx-auto lg:mt-10"
+  />
+
+  <div class="container">
+    <div
+      class="mx-auto bg-muted border rounded-xl p-10 flex flex-col gap-10 mt-2 mb-2 lg:mt-28 lg:mb-28"
+    >
+      <h3
+        class="text-center text-2xl lg:text-4xl font-bold p-4 uppercase text-primary text-wrap"
+      >
+        Find Your Match - Search
+      </h3>
+
+      <h4
+        class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
+      >
+        General Info
+      </h4>
+
+      <div id="gen-infoform">
+        <div class="flex flex-wrap gap-6 p-4">
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Nationality
+            </h6>
+            <SelectWrapper
+              client:load
+              name="nationality"
+              placeholder="Select Nationality"
+              options={nationalityOptions}
+              onChange={(value) => handleSelectChange(value, "nationality")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Marital Status
+            </h6>
+            <SelectWrapper
+              client:load
+              name="maritalStatus"
+              placeholder="Select Marital Status"
+              options={maritalStatusOptions}
+              onChange={(value) => handleSelectChange(value, "maritalStatus")}
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-6 p-4">
+          <div class="flex-1 min-w-[150px] text-wrap">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Age
+            </h6>
+            <SelectWrapper
+              client:load
+              name="age"
+              placeholder="Select Age"
+              options={ageOptions}
+              defaultValue="18"
+              onChange={(value) => handleSelectChange(value, "age")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px] text-wrap">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Residence
+            </h6>
+            <SelectWrapper
+              client:load
+              name="residence"
+              placeholder="Select Residence"
+              options={residenceOptions}
+              onChange={(value) => handleSelectChange(value, "residence")}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="adv-infoform" class="hidden">
+        <h4
+          class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
+        >
+          Health & Looks
+        </h4>
+
+        <!-- ADVANCED SEARCH FEATURES -->
+        <div class="flex flex-wrap gap-6 p-4">
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Skin Color
+            </h6>
+            <SelectWrapper
+              client:load
+              name="skinColor"
+              placeholder="Select Skin Color"
+              options={skinColorOptions}
+              onChange={(value) => handleSelectChange(value, "skinColor")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Eye Color
+            </h6>
+            <SelectWrapper
+              client:load
+              name="eyeColor"
+              placeholder="Select Eye Color"
+              options={eyeColorOptions}
+              onChange={(value) => handleSelectChange(value, "eyeColor")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Body Type
+            </h6>
+            <SelectWrapper
+              client:load
+              name="bodyType"
+              placeholder="Body Type"
+              options={bodyTypeOptions}
+              onChange={(value) => handleSelectChange(value, "bodyType")}
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-6 p-4">
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Beard
+            </h6>
+            <SelectWrapper
+              client:load
+              name="beard"
+              placeholder="Beard"
+              options={beardOptions}
+              onChange={(value) => handleSelectChange(value, "beard")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Height
+            </h6>
+            <SelectWrapper
+              client:load
+              name="height"
+              placeholder="Height"
+              options={heightOptions}
+              onChange={(value) => handleSelectChange(value, "height")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Weight
+            </h6>
+            <SelectWrapper
+              client:load
+              name="weight"
+              placeholder="Weight"
+              options={weightOptions}
+              onChange={(value) => handleSelectChange(value, "weight")}
+            />
+          </div>
+        </div>
+
+        <h4
+          class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
+        >
+          Religion
+        </h4>
+
+        <div class="flex flex-wrap gap-6 p-4">
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Devotion
+            </h6>
+            <SelectWrapper
+              client:load
+              name="devotion"
+              placeholder="Devotion"
+              options={devotionOptions}
+              onChange={(value) => handleSelectChange(value, "devotion")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Sect
+            </h6>
+            <SelectWrapper
+              client:load
+              name="sect"
+              placeholder="Sect"
+              options={sectOptions}
+              onChange={(value) => handleSelectChange(value, "sect")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Revert
+            </h6>
+            <SelectWrapper
+              client:load
+              name="revert"
+              placeholder="Revert"
+              options={revertOptions}
+              onChange={(value) => handleSelectChange(value, "revert")}
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-6 p-4">
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Practicing Since
+            </h6>
+            <SelectWrapper
+              client:load
+              name="practicingSince"
+              placeholder="Practicing Since"
+              options={practicingSinceOptions}
+              onChange={(value) => handleSelectChange(value, "practicingSince")}
+            />
+          </div>
+
+          <div class="flex-1 min-w-[150px]">
+            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+              Prayer Pattern
+            </h6>
+            <SelectWrapper
+              client:load
+              name="prayerPattern"
+              placeholder="Prayer Pattern"
+              options={prayerPatternOptions}
+              onChange={(value) => handleSelectChange(value, "prayerPattern")}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="btns"
+        class="flex flex-col lg:flex-row lg:justify-between p-4 gap-6"
+      >
+        <button
+          id="advancedButton"
+          class="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase"
+        >
+          Advanced
+        </button>
+
+        <div class="flex gap-4 flex-col lg:flex-row">
+          <Button
+            className="lg:px-16 py-2 px-10 bg-white text-primary border-primary border text-sm lg:text-lg rounded-xl font-semibold uppercase"
+            >Reset</Button
+          >
+          <Button
+            className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase"
+            >Search</Button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const advancedButton = document.getElementById("advancedButton");
+  const advSection = document.getElementById("adv-infoform");
+
+  if (advancedButton && advSection) {
+    advancedButton.addEventListener("click", () => {
+      advSection.classList.toggle("hidden");
+      advancedButton.textContent = advSection.classList.contains("hidden")
+        ? "Advanced"
+        : "Hide Advanced";
+    });
+  }
+</script>
+
