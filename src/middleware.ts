@@ -11,13 +11,9 @@ const onboardingMiddleware: MiddlewareHandler = async (context, next) => {
   // Skip middleware for public routes, API routes, and the onboarding pages themselves
   const url = new URL(request.url);
   const publicPaths = [
+    '/signup',
     '/sign-in',
     '/sign-up',
-    '/profile',
-    '/onboardoath',
-    '/onboardpersonal',
-    '/onboardreligion',
-    '/onboardtraits',
     '/api',
     '/_astro',
     '/assets',
@@ -29,13 +25,31 @@ const onboardingMiddleware: MiddlewareHandler = async (context, next) => {
     return next();
   }
   
+  // Protected paths that require authentication
+  const protectedPaths = [
+    '/profile',
+    '/onboardoath',
+    '/onboardpersonal',
+    '/onboardreligion',
+    '/onboardtraits',
+  ];
+  
+  const isProtectedPath = protectedPaths.some(path => url.pathname.startsWith(path));
+  
+  // If not a protected path, continue with the request
+  if (!isProtectedPath) {
+    return next();
+  }
+  
   // Get the authenticated user
   const auth = locals.auth();
   const userId = auth.userId;
   
-  // If no user is logged in, proceed with normal flow (Clerk will handle redirects)
+  // If no user is logged in, redirect to sign-in for protected paths
   if (!userId) {
-    return next();
+    const signInUrl = new URL('/signup', url.origin);
+    signInUrl.searchParams.set('redirect_url', url.pathname);
+    return redirect(signInUrl.toString());
   }
   
   try {
