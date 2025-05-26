@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Facebook, Instagram, Linkedin, Moon, Send, Sun, Twitter } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Moon, Send, Sun, Twitter, Youtube } from "lucide-react"
 
 function Footer() {
   const [isDarkMode, setIsDarkMode] = React.useState(true)
@@ -72,9 +72,6 @@ function Footer() {
               <a href="/contactus" className="block transition-colors hover:text-primary">
                 Contact
               </a>
-              <a href="/dashboard" className="block transition-colors hover:text-primary">
-                Dashboard
-              </a>
             </nav>
           </div>
           <div>
@@ -93,8 +90,10 @@ function Footer() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
-                      <Facebook className="h-4 w-4" />
-                      <span className="sr-only">Facebook</span>
+                      <a target="_blank" href="https://www.facebook.com/nikahly.official/">
+                        <Facebook className="h-4 w-4" />
+                        <span className="sr-only">Facebook</span>
+                      </a>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -106,8 +105,10 @@ function Footer() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
-                      <Twitter className="h-4 w-4" />
-                      <span className="sr-only">Twitter</span>
+                      <a target="_blank" href="https://x.com/nikahlyofficial">
+                        <Twitter className="h-4 w-4" />
+                        <span className="sr-only">Twitter</span>
+                      </a>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -119,8 +120,10 @@ function Footer() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
-                      <Instagram className="h-4 w-4" />
-                      <span className="sr-only">Instagram</span>
+                      <a target="_blank" href="https://www.instagram.com/nikahly.official/">
+                        <Instagram className="h-4 w-4" />
+                        <span className="sr-only">Instagram</span>
+                      </a>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -132,12 +135,14 @@ function Footer() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
-                      <Linkedin className="h-4 w-4" />
-                      <span className="sr-only">LinkedIn</span>
+                      <a target="_blank" href="https://www.youtube.com/@Nikahly">
+                        <Youtube className="h-4 w-4" />
+                        <span className="sr-only">Youtube</span>
+                      </a>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Connect with us on LinkedIn</p>
+                    <p>Connect with us on Youtube</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -169,12 +174,6 @@ function Footer() {
             </a>
             <a href="/faq" className="transition-colors hover:text-primary">
               FAQ
-            </a>
-            <a href="/Onboardpage1" className="transition-colors hover:text-primary">
-              Onboarding Pages
-            </a>
-            <a href="/profile" className="transition-colors hover:text-primary">
-              Profile
             </a>
           </nav>
         </div>
