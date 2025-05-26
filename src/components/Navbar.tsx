@@ -95,6 +95,11 @@ const Navbar = ({
               <NavigationMenu className="font-extralight">
                 <NavigationMenuList className="gap-5">
                   {menu.map((item) => renderMenuItem(item))}
+                  <SignedIn>
+                    <NavigationMenuItem>
+                      <a href="/profile">Profile</a>
+                    </NavigationMenuItem>
+                  </SignedIn>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -153,6 +158,11 @@ const Navbar = ({
                     className="flex w-full flex-col gap-4 items-center"
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
+                    <SignedIn>
+                      <NavigationMenuItem>
+                        <a href="/profile">Profile</a>
+                      </NavigationMenuItem>
+                    </SignedIn>
                   </Accordion>
                   <div className="flex flex-col gap-5">
                     <SignedOut>
@@ -228,6 +238,7 @@ const renderMenuItem = (item: MenuItem) => {
     >
       {item.title}
     </a>
+
   );
 };
 
