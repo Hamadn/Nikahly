@@ -13,6 +13,7 @@ const onboardingMiddleware: MiddlewareHandler = async (context, next) => {
   const publicPaths = [
     '/sign-in',
     '/sign-up',
+    '/profile',
     '/onboardoath',
     '/onboardpersonal',
     '/onboardreligion',
