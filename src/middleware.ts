@@ -11,59 +11,40 @@ const onboardingMiddleware: MiddlewareHandler = async (context, next) => {
   // Skip middleware for public routes, API routes, and the onboarding pages themselves
   const url = new URL(request.url);
   const publicPaths = [
-    '/signup',
     '/sign-in',
     '/sign-up',
-    '/api',
-    '/_astro',
-    '/assets',
-  ];
-  
-  // Check if the current path is public
-  const isPublicPath = publicPaths.some(path => url.pathname.startsWith(path));
-  if (isPublicPath) {
-    return next();
-  }
-  
-  // Protected paths that require authentication
-  const protectedPaths = [
     '/profile',
     '/onboardoath',
     '/onboardpersonal',
     '/onboardreligion',
     '/onboardtraits',
+    '/api',
+    '/_astro',
+    '/assets',
   ];
-  
-  const isProtectedPath = protectedPaths.some(path => url.pathname.startsWith(path));
-  
-  // If not a protected path, continue with the request
-  if (!isProtectedPath) {
+  // Check if the current path is public
+  const isPublicPath = publicPaths.some(path => url.pathname.startsWith(path));
+  if (isPublicPath) {
     return next();
   }
-  
   // Get the authenticated user
   const auth = locals.auth();
   const userId = auth.userId;
-  
-  // If no user is logged in, redirect to sign-in for protected paths
+
+  // If no user is logged in, proceed with normal flow (Clerk will handle redirects)
   if (!userId) {
-    const signInUrl = new URL('/signup', url.origin);
-    signInUrl.searchParams.set('redirect_url', url.pathname);
-    return redirect(signInUrl.toString());
+    return next();
   }
-  
+
   try {
     // Get the user from Clerk
     const user = await clerk.users.getUser(userId);
-    
     // Check if onboarding is complete using public metadata
     const onboardingComplete = user.publicMetadata?.onboardingComplete === true;
-    
     // If onboarding is not complete, redirect to onboarding
     if (!onboardingComplete) {
       return redirect('/onboardoath');
     }
-    
     // If onboarding is complete, proceed
     return next();
   } catch (error) {
