@@ -1,0 +1,21 @@
+---
+import { Button } from "../components/ui/button";
+import OnboardingModalReact from "./OnboardingModalReact";
+---
+
+<div id="onboarding-modal-wrapper">
+  <OnboardingModalReact client:load />
+</div>
+
+<script>
+  // Script to handle the modal opening from the first page
+  document.addEventListener('DOMContentLoaded', () => {
+    // Listen for the custom event to open the modal
+    window.addEventListener('openOnboardingModal', () => {
+      // Dispatch event to the React component
+      document.dispatchEvent(new CustomEvent('openOnboardingModalReact', { 
+        detail: { isOpen: true } 
+      }));
+    });
+  });
+</script>

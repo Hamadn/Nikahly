@@ -1,29 +1,24 @@
 ---
 import "../styles/global.css";
 import { SignUp } from "@clerk/astro/components";
+import '@fontsource/kulim-park';
+import '@fontsource/poppins';
 ---
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+</head>
+<body>
 <div class="min-h-screen flex flex-col container">
-  {/* Header */}
-  <header class="w-full py-4 px-6 flex justify-between items-center">
-    <a href="/" class="flex items-center">
-      <img src="/redLogo.svg" alt="logo" class="w-20" />
-    </a>
-    <div class="flex items-center gap-4">
-      <a href="/login" class="px-4 py-2 text-primary font-medium">Sign in</a>
-      <a
-        href="/signup"
-        class="px-4 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors"
-      >
-        Sign up
-      </a>
-    </div>
-  </header>
-
   {/* Signup Form */}
   <div class="flex-1 flex items-center justify-center">
     <SignUp
-    signInForceRedirectUrl="/onboarding"
+    signInUrl="/login"
+    forceRedirectUrl="/onboardoath"
       appearance={{
         layout: {
           logoImageUrl: "/redLogo.svg",
@@ -58,3 +53,5 @@ import { SignUp } from "@clerk/astro/components";
     />
   </div>
 </div>
+</body>
+</html>

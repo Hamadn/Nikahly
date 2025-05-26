@@ -1,49 +1,48 @@
 ---
-import { SignIn } from '@clerk/astro/components';
-import '../styles/global.css';
+import { SignIn } from "@clerk/astro/components";
+import "../styles/global.css";
+import "@fontsource/kulim-park";
+import "@fontsource/poppins";
 ---
 
-<div class="min-h-screen flex flex-col container">
-  {/* Header */}
-  <header class="w-full py-4 px-6 flex justify-between items-center">
-    <a href="/" class="flex items-center">
-      <img src="/redLogo.svg" alt="logo" class="w-20" />
-    </a>
-    <div class="flex items-center gap-4">
-      <a href="/login" class="px-4 py-2 text-primary font-medium">Sign in</a>
-      <a 
-        href="/signup" 
-        class="px-4 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors"
-      >
-        Sign up
-      </a>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="min-h-screen flex flex-col">
+        {/* Login Form */}
+        <div class="flex-1 flex items-center justify-center">
+          <SignIn
+            signUpUrl="/signup"
+            appearance={{
+              layout: {
+                logoImageUrl: "/redLogo.svg",
+                socialButtonsPlacement: "bottom",
+                shimmer: true,
+              },
+              elements: {
+                rootBox: {
+                  maxWidth: "60rem",
+                },
+                cardBox: {
+                  maxWidth: "60rem",
+                },
+                card: {
+                  maxWidth: "60rem",
+                },
+                formButtonPrimary: {
+                  backgroundColor: "#c7413e",
+                },
+              },
+            }}
+          />
+        </div>
+      </div>
     </div>
-  </header>
-
-  {/* Login Form */}
-  <div class="flex-1 flex items-center justify-center">
-    <SignIn appearance={{
-      layout: {
-        logoImageUrl: "/redLogo.svg",
-        socialButtonsPlacement: "bottom",
-      },
-      elements: {
-        rootBox: {
-          width: "30rem",
-          maxWidth: "30rem",
-        },
-        cardBox: {
-          width: "30rem",
-          maxWidth: "30rem",
-        },
-        card: {
-          width: "30rem",
-          maxWidth: "30rem",
-        },
-        formButtonPrimary: {
-          backgroundColor: "#c7413e",
-        },
-      },
-    }}/>
-  </div>
-</div>
+  </body>
+</html>
