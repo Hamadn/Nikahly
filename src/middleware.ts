@@ -13,6 +13,7 @@ const onboardingMiddleware: MiddlewareHandler = async (context, next) => {
   const publicPaths = [
     '/sign-in',
     '/sign-up',
+    '/profile',
     '/onboardoath',
     '/onboardpersonal',
     '/onboardreligion',
@@ -21,34 +22,29 @@ const onboardingMiddleware: MiddlewareHandler = async (context, next) => {
     '/_astro',
     '/assets',
   ];
-  
   // Check if the current path is public
   const isPublicPath = publicPaths.some(path => url.pathname.startsWith(path));
   if (isPublicPath) {
     return next();
   }
-  
   // Get the authenticated user
   const auth = locals.auth();
   const userId = auth.userId;
-  
+
   // If no user is logged in, proceed with normal flow (Clerk will handle redirects)
   if (!userId) {
     return next();
   }
-  
+
   try {
     // Get the user from Clerk
     const user = await clerk.users.getUser(userId);
-    
     // Check if onboarding is complete using public metadata
     const onboardingComplete = user.publicMetadata?.onboardingComplete === true;
-    
     // If onboarding is not complete, redirect to onboarding
     if (!onboardingComplete) {
       return redirect('/onboardoath');
     }
-    
     // If onboarding is complete, proceed
     return next();
   } catch (error) {

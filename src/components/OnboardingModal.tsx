@@ -50,7 +50,7 @@ const OnboardingModal = ({
     } else if (activeTab === "step4") {
       // Complete onboarding
       onOpenChange(false);
-      window.location.href = "/index"; // Redirect to dashboard or wherever needed
+      window.location.href = "/dashboard"; // Redirect to dashboard or wherever needed
     }
   };
 

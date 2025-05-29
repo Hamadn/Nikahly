@@ -21,8 +21,8 @@ import { Button } from "@/components/ui/button";
             </p>
           </div>
           <div class="m-7">
-            <form action="https://api.web3forms.com/submit" method="POST" id="form">
-              <input type="hidden" name="access_key" value={process.env.ACCESSKEY_WEB3FORMS} />
+            <form method="POST" id="form">
+              <input type="hidden" name="access_key" value="ce84b314-7565-4f35-8a4b-6641fbbc2278" />
               <input type="hidden" name="subject" value="New Submission from Web3Forms" />
               <input type="checkbox" name="botcheck" id="" style="display: none;" />
     
@@ -39,6 +39,7 @@ import { Button } from "@/components/ui/button";
     
                 <textarea rows="5" name="message" id="message" placeholder="Your Message" class="w-full px-3 py-2 placeholder-muted-foreground border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500 text-black" required></textarea>
               </div>
+              <div id="result"></div>
               <div class="mb-6">
                 <Button type="submit" className="w-full px-3 py-4 bg-gradient-to-b from-gradient-start to-gradient-end rounded-md focus:bg-gradient-to-b focus:outline-none text-white">
                   Send Message
@@ -54,59 +55,44 @@ import { Button } from "@/components/ui/button";
 </Layout>
 
 <script is:inline>
-
-  // use astro:page-load event if you are using View Transitions
-
-  document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
   
-      const form = document.getElementById("form");
-      const result = document.getElementById("result");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        form.classList.add("was-validated");
-        if (!form.checkValidity()) {
-          form.querySelectorAll(":invalid")[0].focus();
-          return;
-        }
-        const formData = new FormData(form);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-
-        result.innerHTML = "Sending...";
-
-        fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: json,
-        })
+  form.addEventListener('submit', function(e) {
+      const formData = new FormData(form);
+      e.preventDefault();
+  
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+  
+      result.innerHTML = "Please wait..."
+  
+      fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: json
+          })
           .then(async (response) => {
-            let json = await response.json();
-            if (response.status == 200) {
-              result.classList.add("text-green-500");
-              result.innerHTML = json.message;
-            } else {
-              console.log(response);
-              result.classList.add("text-red-500");
-              result.innerHTML = json.message;
-            }
+              let json = await response.json();
+              if (response.status == 200) {
+                  result.innerHTML = json.message;
+              } else {
+                  console.log(response);
+                  result.innerHTML = json.message;
+              }
           })
-          .catch((error) => {
-            console.log(error);
-            result.innerHTML = "Something went wrong!";
+          .catch(error => {
+              console.log(error);
+              result.innerHTML = "Something went wrong!";
           })
-          .then(function () {
-            form.reset();
-            form.classList.remove("was-validated");
-            setTimeout(() => {
-              result.style.display = "none";
-            }, 5000);
+          .then(function() {
+              form.reset();
+              setTimeout(() => {
+                  result.style.display = "none";
+              }, 3000);
           });
-      });
-    },
-    { once: true },
-  );
-</script>
+  });
+  </script>
