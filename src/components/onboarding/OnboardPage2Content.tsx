@@ -139,7 +139,6 @@ const OnboardPage2Content = () => {
             placeholder="Nationality"
             defaultValue="UAE"
             onChange={() => {}}
-            slim
           />
         </div>
 

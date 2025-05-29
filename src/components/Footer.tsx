@@ -30,26 +30,7 @@ function Footer() {
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
-            <h2 className="mb-4 text-3xl font-bold tracking-tight">Stay Connected</h2>
-            <p className="mb-6 text-muted-foreground">
-              Join our newsletter for the latest updates and exclusive offers.
-            </p>
-            <form className="relative">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="pr-12 backdrop-blur-sm"
-              />
-              <Button
-                type="submit"
-                size="icon"
-                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-primary text-primary-foreground transition-transform hover:scale-105"
-              >
-                <Send className="h-4 w-4" />
-                <span className="sr-only">Subscribe</span>
-              </Button>
-            </form>
-            <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
+            <img src="/redLogo.svg" alt="" className="w-40 h-40" />
           </div>
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
@@ -94,7 +75,7 @@ function Footer() {
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Facebook className="h-4 w-4" />
-                      <span className="sr-only">Facebook</span>
+                      <span className="sr-only"><a href="https://www.facebook.com/nikahlyofficial">Facebook</a></span>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -107,7 +88,7 @@ function Footer() {
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Twitter className="h-4 w-4" />
-                      <span className="sr-only">Twitter</span>
+                      <span className="sr-only"><a href="https://twitter.com/nikahlyofficial">Twitter</a></span>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -120,24 +101,11 @@ function Footer() {
                   <TooltipTrigger asChild>
                     <Button variant="outline" size="icon" className="rounded-full">
                       <Instagram className="h-4 w-4" />
-                      <span className="sr-only">Instagram</span>
+                      <span className="sr-only"><a href="https://www.instagram.com/nikahly.official">Instagram</a></span>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Instagram</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
-                      <Linkedin className="h-4 w-4" />
-                      <span className="sr-only">LinkedIn</span>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Connect with us on LinkedIn</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -169,12 +137,6 @@ function Footer() {
             </a>
             <a href="/faq" className="transition-colors hover:text-primary">
               FAQ
-            </a>
-            <a href="/Onboardpage1" className="transition-colors hover:text-primary">
-              Onboarding Pages
-            </a>
-            <a href="/profile" className="transition-colors hover:text-primary">
-              Profile
             </a>
           </nav>
         </div>

@@ -2,21 +2,9 @@ import { cn } from "@/lib/utils";
 export function FeaturesSectionWithHoverEffects() {
   const features = [
     {
-      title: "AI-Driven Word Filtering",
-      icon: <img src="/ai-services-sec.svg" alt="ai-services-sec" />,
-      description:
-        "AI-Driven word filtering that helps prevent unethical language, harassment, and other social issues.",
-    },
-    {
       title: "Custom Matchmaking",
       icon: <img src="/ring-services-section.svg" alt="ring-services-section" />,
       description: "Custom matchmaking tailored to your spouse preferences through a personalized questionnaire."
-    },
-    {
-      title: "Smart Moderator Bot",
-      icon: <img src="/robotface-services-section.svg" alt="robotface-services-section" />,
-      description:
-        "Smart moderator bot to maintain respectful conversations by flagging inappropriate content.",
     },
     {
       title: "Quran and Sunnah Access",
@@ -29,14 +17,14 @@ export function FeaturesSectionWithHoverEffects() {
       description: "Ensures privacy by blurring images and limiting chat with access only unlocked upon wali approval.",
     },
     {
-      title: "Limited Chat",
-      icon: <img src="/chat-services-section.svg" alt="chat-services-section" />,
+      title: "Dedicated Video Chat Support",
+      icon: <img src="/videoicon.svg" alt="videoicon" />,
       description:
-        "Implements a limited chat feature to ensure conversations align with community values.",
+        "Implements a dedicated video chat support feature to help with finding the perfect match.",
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}

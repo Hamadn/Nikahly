@@ -51,6 +51,30 @@ const personalityTraits = [
   { emoji: "👨🏻‍⚖️", text: "Judge" },
 ];
 
+const deenTraits = [
+  { emoji: "🕋", text: "Comitted Worshipper" },
+  { emoji: "🕌", text: "Hafidh" },
+  { emoji: "📖", text: "Reads Quran" },
+  { emoji: "👪", text: "Family Oriented" },
+  { emoji: "✌🏻", text: "Peace Advocate" },
+  { emoji: "🧑🏻‍🎓", text: "Student of Knowledge" },
+  { emoji: "🕋", text: "Performed Umrah" },
+  { emoji: "🕋", text: "Performed Hajj" },
+  { emoji: "🌍", text: "Community Volunteer" },
+  { emoji: "🧼", text: "Tahara Conscious" },
+  { emoji: "💡", text: "Spiritual Learner" },
+  { emoji: "🤲🏻", text: "Dua" },
+  { emoji: "☪️", text: "Fast Observer" },
+  { emoji: "🕊️", text: "Modest Values" },
+  { emoji: "🕌", text: "Regular Masjid Visitor" },
+  { emoji: "🌹", text: "Halal Lifestyle Advocate" },
+  { emoji: "🕌", text: "Mosque Committee Member" },
+  { emoji: "🎙️", text: "Religious Speaker" },
+  { emoji: "📿", text: "Zikr Lover" },
+  { emoji: "📥", text: "Fluent Arabic" },
+  { emoji: "📚", text: "Hadith Enthusiast" },
+];
+
 const OnboardPage4Content = () => {
   const { formData, updateFormData } = useContext(OnboardingContext);
   const [selectedTraits, setSelectedTraits] = useState<string[]>(formData.personalityTraits || []);
@@ -113,6 +137,24 @@ const OnboardPage4Content = () => {
 
       <div id="traits" className="flex flex-wrap gap-2 p-2 mt-5 justify-center items-center lg:justify-start">
         {personalityTraits.map((trait, index) => (
+          <button
+            key={index}
+            className={`text-primary text-md lg:text-xl border border-primary rounded-xl p-2 transition-all duration-100 ${
+              selectedTraits.includes(trait.text) ? "bg-primary text-white" : "hover:bg-primary hover:text-white"
+            }`}
+            onClick={() => toggleTrait(trait.text)}
+          >
+            {trait.emoji} {trait.text}
+          </button>
+        ))}
+      </div>
+
+      <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Deen Traits</p>
+
+      <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Select your deen traits</h6>
+
+      <div id="deenTraits" className="flex flex-wrap gap-2 p-2 mt-5 justify-center items-center lg:justify-start">
+        {deenTraits.map((trait, index) => (
           <button
             key={index}
             className={`text-primary text-md lg:text-xl border border-primary rounded-xl p-2 transition-all duration-100 ${
