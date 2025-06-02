@@ -10,10 +10,11 @@ import OnboardPage3Content from "./onboarding/OnboardPage3Content";
 import OnboardPage4Content from "./onboarding/OnboardPage4Content";
 
 // Create a context for sharing form data between components
-export type FormDataType = {
+export interface FormDataType {
   // Page 2 - Personal Details
   dateOfBirth?: string;
   nationality?: string;
+  countryEmoji?: string; // Store the country flag emoji
   residence?: string;
   city?: string;
   maritalStatus?: string;
@@ -78,15 +79,42 @@ const OnboardingModalReact = () => {
   
   // Load saved form data from localStorage when component mounts
   useEffect(() => {
-    const savedData = localStorage.getItem('onboardingFormData');
-    if (savedData) {
-      try {
-        const parsedData = JSON.parse(savedData);
-        setFormData(parsedData);
-      } catch (error) {
-        console.error('Error parsing saved form data:', error);
+    // Check if this is a new user by looking for a flag in sessionStorage
+    const isNewUser = sessionStorage.getItem('isNewUser') === 'true';
+    
+    if (isNewUser) {
+      // Clear any existing form data for new users
+      localStorage.removeItem('onboardingFormData');
+      setFormData({});
+      // Clear the flag
+      sessionStorage.removeItem('isNewUser');
+    } else {
+      // Load saved form data for returning users
+      const savedData = localStorage.getItem('onboardingFormData');
+      if (savedData) {
+        try {
+          const parsedData = JSON.parse(savedData);
+          setFormData(parsedData);
+        } catch (error) {
+          console.error('Error parsing saved form data:', error);
+        }
       }
     }
+  }, []);
+  
+  // Set up a listener for user sign out
+  useEffect(() => {
+    const handleSignOut = () => {
+      // Set a flag in sessionStorage to indicate a new user is signing up
+      sessionStorage.setItem('isNewUser', 'true');
+    };
+    
+    // Listen for the sign out event from Clerk
+    document.addEventListener('userSignedOut', handleSignOut);
+    
+    return () => {
+      document.removeEventListener('userSignedOut', handleSignOut);
+    };
   }, []);
   
   // Function to update form data and save to localStorage

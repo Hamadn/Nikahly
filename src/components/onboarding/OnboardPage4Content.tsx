@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { OnboardingContext } from "../OnboardingModalReact";
+import { OnboardingContext, type FormDataType } from "../OnboardingModalReact";
 import { Textarea } from "@/components/ui/textarea";
 
 // Options from the original onboardpage4.astro
@@ -79,8 +79,8 @@ const OnboardPage4Content = () => {
   const { formData, updateFormData } = useContext(OnboardingContext);
   const [selectedTraits, setSelectedTraits] = useState<string[]>(formData.personalityTraits || []);
 
-  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>, field: string) => {
-    updateFormData(field, e.target.value);
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>, field: keyof FormDataType) => {
+    updateFormData(field as string, e.target.value);
   };
 
   const toggleTrait = (trait: string) => {
