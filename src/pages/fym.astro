@@ -3,7 +3,6 @@ import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { SelectWrapper } from "../components/SelectWrapper";
-import { clerkClient } from "@clerk/astro/server";
 
 const handleSelectChange = (value: string, name: string) => {
   console.log(`${name}: ${value}`);
@@ -126,17 +125,6 @@ const eyeColorOptions = [
   { label: "Other", value: "other" },
 ];
 
-const selectedTraits: string[] = [];
-
-const toggleTrait = (trait: string) => {
-  const index = selectedTraits.indexOf(trait);
-  if (index === -1) {
-    selectedTraits.push(trait);
-  } else {
-    selectedTraits.splice(index, 1);
-  }
-};
-
 interface Hero115Props {
   heading: string;
   description: string;
@@ -168,13 +156,11 @@ const Hero115 = {
       </div>
     </div>
   </section>
-
   <img
     src="/fym-mainimg.svg"
     alt="fym"
     class="hidden lg:block lg:absolute lg:z-10 lg:w-80 lg:h-96 lg:top-80 lg:right-0 lg:left-0 lg:mx-auto lg:mt-10"
   />
-
   <div class="container">
     <div
       class="mx-auto bg-muted border rounded-xl p-10 flex flex-col gap-10 mt-2 mb-2 lg:mt-28 lg:mb-28"
@@ -184,259 +170,279 @@ const Hero115 = {
       >
         Find Your Match - Search
       </h3>
-
       <h4
         class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
       >
         General Info
       </h4>
-
-      <div id="gen-infoform">
-        <div class="flex flex-wrap gap-6 p-4">
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Nationality
-            </h6>
-            <SelectWrapper
-              client:load
-              name="nationality"
-              placeholder="Select Nationality"
-              options={nationalityOptions}
-              onChange={(value) => handleSelectChange(value, "nationality")}
-            />
+      <form id="searchForm">
+        <div id="gen-infoform">
+          <div class="flex flex-wrap gap-6 p-4">
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Nationality
+              </h6>
+              <SelectWrapper
+                client:load
+                name="nationality"
+                placeholder="Select Nationality"
+                options={nationalityOptions}
+                onChange={(value) => handleSelectChange(value, "nationality")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Marital Status
+              </h6>
+              <SelectWrapper
+                client:load
+                name="maritalStatus"
+                placeholder="Select Marital Status"
+                options={maritalStatusOptions}
+                onChange={(value) => handleSelectChange(value, "maritalStatus")}
+              />
+            </div>
           </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Marital Status
-            </h6>
-            <SelectWrapper
-              client:load
-              name="maritalStatus"
-              placeholder="Select Marital Status"
-              options={maritalStatusOptions}
-              onChange={(value) => handleSelectChange(value, "maritalStatus")}
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-6 p-4">
-          <div class="flex-1 min-w-[150px] text-wrap">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Age
-            </h6>
-            <SelectWrapper
-              client:load
-              name="age"
-              placeholder="Select Age"
-              options={ageOptions}
-              defaultValue="18"
-              onChange={(value) => handleSelectChange(value, "age")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px] text-wrap">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Residence
-            </h6>
-            <SelectWrapper
-              client:load
-              name="residence"
-              placeholder="Select Residence"
-              options={residenceOptions}
-              onChange={(value) => handleSelectChange(value, "residence")}
-            />
+          <div class="flex flex-wrap gap-6 p-4">
+            <div class="flex-1 min-w-[150px] text-wrap">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Age
+              </h6>
+              <SelectWrapper
+                client:load
+                name="age"
+                placeholder="Select Age"
+                options={ageOptions}
+                defaultValue="18"
+                onChange={(value) => handleSelectChange(value, "age")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px] text-wrap">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Residence
+              </h6>
+              <SelectWrapper
+                client:load
+                name="residence"
+                placeholder="Select Residence"
+                options={residenceOptions}
+                onChange={(value) => handleSelectChange(value, "residence")}
+              />
+            </div>
           </div>
         </div>
-      </div>
-
-      <div id="adv-infoform" class="hidden">
-        <h4
-          class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
-        >
-          Health & Looks
-        </h4>
-
-        <!-- ADVANCED SEARCH FEATURES -->
-        <div class="flex flex-wrap gap-6 p-4">
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Skin Color
-            </h6>
-            <SelectWrapper
-              client:load
-              name="skinColor"
-              placeholder="Select Skin Color"
-              options={skinColorOptions}
-              onChange={(value) => handleSelectChange(value, "skinColor")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Eye Color
-            </h6>
-            <SelectWrapper
-              client:load
-              name="eyeColor"
-              placeholder="Select Eye Color"
-              options={eyeColorOptions}
-              onChange={(value) => handleSelectChange(value, "eyeColor")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Body Type
-            </h6>
-            <SelectWrapper
-              client:load
-              name="bodyType"
-              placeholder="Body Type"
-              options={bodyTypeOptions}
-              onChange={(value) => handleSelectChange(value, "bodyType")}
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-6 p-4">
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Beard
-            </h6>
-            <SelectWrapper
-              client:load
-              name="beard"
-              placeholder="Beard"
-              options={beardOptions}
-              onChange={(value) => handleSelectChange(value, "beard")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Height
-            </h6>
-            <SelectWrapper
-              client:load
-              name="height"
-              placeholder="Height"
-              options={heightOptions}
-              onChange={(value) => handleSelectChange(value, "height")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Weight
-            </h6>
-            <SelectWrapper
-              client:load
-              name="weight"
-              placeholder="Weight"
-              options={weightOptions}
-              onChange={(value) => handleSelectChange(value, "weight")}
-            />
-          </div>
-        </div>
-
-        <h4
-          class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
-        >
-          Religion
-        </h4>
-
-        <div class="flex flex-wrap gap-6 p-4">
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Devotion
-            </h6>
-            <SelectWrapper
-              client:load
-              name="devotion"
-              placeholder="Devotion"
-              options={devotionOptions}
-              onChange={(value) => handleSelectChange(value, "devotion")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Sect
-            </h6>
-            <SelectWrapper
-              client:load
-              name="sect"
-              placeholder="Sect"
-              options={sectOptions}
-              onChange={(value) => handleSelectChange(value, "sect")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Revert
-            </h6>
-            <SelectWrapper
-              client:load
-              name="revert"
-              placeholder="Revert"
-              options={revertOptions}
-              onChange={(value) => handleSelectChange(value, "revert")}
-            />
-          </div>
-        </div>
-
-        <div class="flex flex-wrap gap-6 p-4">
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Practicing Since
-            </h6>
-            <SelectWrapper
-              client:load
-              name="practicingSince"
-              placeholder="Practicing Since"
-              options={practicingSinceOptions}
-              onChange={(value) => handleSelectChange(value, "practicingSince")}
-            />
-          </div>
-
-          <div class="flex-1 min-w-[150px]">
-            <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
-              Prayer Pattern
-            </h6>
-            <SelectWrapper
-              client:load
-              name="prayerPattern"
-              placeholder="Prayer Pattern"
-              options={prayerPatternOptions}
-              onChange={(value) => handleSelectChange(value, "prayerPattern")}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div
-        id="btns"
-        class="flex flex-col lg:flex-row lg:justify-between p-4 gap-6"
-      >
-        <button
-          id="advancedButton"
-          class="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase"
-        >
-          Advanced
-        </button>
-
-        <div class="flex gap-4 flex-col lg:flex-row">
-          <Button
-            className="lg:px-16 py-2 px-10 bg-white text-primary border-primary border text-sm lg:text-lg rounded-xl font-semibold uppercase"
-            >Reset</Button
+        <div id="adv-infoform" class="hidden">
+          <h4
+            class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
           >
+            Health & Looks
+          </h4>
+          <!-- ADVANCED SEARCH FEATURES -->
+          <div class="flex flex-wrap gap-6 p-4">
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Skin Color
+              </h6>
+              <SelectWrapper
+                client:load
+                name="skinColor"
+                placeholder="Select Skin Color"
+                options={skinColorOptions}
+                onChange={(value) => handleSelectChange(value, "skinColor")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Eye Color
+              </h6>
+              <SelectWrapper
+                client:load
+                name="eyeColor"
+                placeholder="Select Eye Color"
+                options={eyeColorOptions}
+                onChange={(value) => handleSelectChange(value, "eyeColor")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Body Type
+              </h6>
+              <SelectWrapper
+                client:load
+                name="bodyType"
+                placeholder="Body Type"
+                options={bodyTypeOptions}
+                onChange={(value) => handleSelectChange(value, "bodyType")}
+              />
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-6 p-4">
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Beard
+              </h6>
+              <SelectWrapper
+                client:load
+                name="beard"
+                placeholder="Beard"
+                options={beardOptions}
+                onChange={(value) => handleSelectChange(value, "beard")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Height
+              </h6>
+              <SelectWrapper
+                client:load
+                name="height"
+                placeholder="Height"
+                options={heightOptions}
+                onChange={(value) => handleSelectChange(value, "height")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Weight
+              </h6>
+              <SelectWrapper
+                client:load
+                name="weight"
+                placeholder="Weight"
+                options={weightOptions}
+                onChange={(value) => handleSelectChange(value, "weight")}
+              />
+            </div>
+          </div>
+          <h4
+            class="text-center lg:text-left text-xl lg:text-2xl font-bold p-4 uppercase text-primary text-wrap"
+          >
+            Religion
+          </h4>
+          <div class="flex flex-wrap gap-6 p-4">
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Devotion
+              </h6>
+              <SelectWrapper
+                client:load
+                name="devotion"
+                placeholder="Devotion"
+                options={devotionOptions}
+                onChange={(value) => handleSelectChange(value, "devotion")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Sect
+              </h6>
+              <SelectWrapper
+                client:load
+                name="sect"
+                placeholder="Sect"
+                options={sectOptions}
+                onChange={(value) => handleSelectChange(value, "sect")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Revert
+              </h6>
+              <SelectWrapper
+                client:load
+                name="revert"
+                placeholder="Revert"
+                options={revertOptions}
+                onChange={(value) => handleSelectChange(value, "revert")}
+              />
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-6 p-4">
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Practicing Since
+              </h6>
+              <SelectWrapper
+                client:load
+                name="practicingSince"
+                placeholder="Practicing Since"
+                options={practicingSinceOptions}
+                onChange={(value) => handleSelectChange(value, "practicingSince")}
+              />
+            </div>
+            <div class="flex-1 min-w-[150px]">
+              <h6 class="text-primary text-sm lg:text-lg font-semibold mb-2">
+                Prayer Pattern
+              </h6>
+              <SelectWrapper
+                client:load
+                name="prayerPattern"
+                placeholder="Prayer Pattern"
+                options={prayerPatternOptions}
+                onChange={(value) => handleSelectChange(value, "prayerPattern")}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          id="btns"
+          class="flex flex-col lg:flex-row lg:justify-between p-4 gap-6"
+        >
           <Button
+            type="button"
+            id="advancedButton"
             className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase"
-            >Search</Button
           >
+            Advanced
+          </Button>
+          <div class="flex gap-4 flex-col lg:flex-row">
+            <Button
+              type="button"
+              id="resetButton"
+              className="lg:px-16 py-2 px-10 bg-white text-primary border-primary border text-sm lg:text-lg rounded-xl font-semibold uppercase"
+            >
+              Reset
+            </Button>
+            <Button
+              type="submit"
+              id="searchButton"
+              className="lg:px-16 py-2 px-10 bg-primary text-white text-sm lg:text-lg rounded-xl font-semibold uppercase"
+            >
+              Search
+            </Button>
+          </div>
         </div>
+      </form>
+    </div>
+
+    <!-- Results Section -->
+    <div id="resultsSection" class="mt-10 mb-10 hidden">
+      <div class="mx-auto border rounded-xl p-10">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-2xl lg:text-3xl font-bold text-primary">
+            Search Results
+          </h3>
+          <div id="resultsCount" class="text-sm text-gray-600"></div>
+        </div>
+        
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-10 hidden">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <p class="mt-2 text-gray-600">Searching for matches...</p>
+        </div>
+        
+        <!-- Error State -->
+        <div id="errorState" class="text-center py-10 text-red-600 hidden">
+          <p>Error loading results. Please try again.</p>
+        </div>
+        
+        <!-- No Results -->
+        <div id="noResults" class="text-center py-10 text-gray-600 hidden">
+          <p>No matches found. Try adjusting your search criteria.</p>
+        </div>
+        
+        <!-- Users Grid -->
+        <div id="usersGrid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
       </div>
     </div>
   </div>
@@ -445,7 +451,19 @@ const Hero115 = {
 <script>
   const advancedButton = document.getElementById("advancedButton");
   const advSection = document.getElementById("adv-infoform");
+  const searchForm = document.getElementById("searchForm") as HTMLFormElement;
+  const resetButton = document.getElementById("resetButton");
+  const resultsSection = document.getElementById("resultsSection");
+  const usersGrid = document.getElementById("usersGrid");
+  const loadingState = document.getElementById("loadingState");
+  const errorState = document.getElementById("errorState");
+  const noResults = document.getElementById("noResults");
+  const resultsCount = document.getElementById("resultsCount");
 
+  // Store current form values
+  let currentFilters: Record<string, string> = {};
+
+  // Advanced toggle functionality
   if (advancedButton && advSection) {
     advancedButton.addEventListener("click", () => {
       advSection.classList.toggle("hidden");
@@ -454,5 +472,139 @@ const Hero115 = {
         : "Hide Advanced";
     });
   }
-</script>
 
+  // Listen for select changes globally
+  window.addEventListener('selectChange', (e: any) => {
+    const { name, value } = e.detail;
+    currentFilters[name] = value;
+  });
+
+  // Search functionality
+  async function performSearch(filters: Record<string, string> = {}) {
+    if (!resultsSection || !usersGrid || !loadingState || !errorState || !noResults || !resultsCount) return;
+
+    // Show results section and loading state
+    resultsSection.classList.remove("hidden");
+    loadingState.classList.remove("hidden");
+    errorState.classList.add("hidden");
+    noResults.classList.add("hidden");
+    usersGrid.innerHTML = "";
+
+    try {
+      // Build query string
+      const queryParams = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value && value.trim() !== '') {
+          queryParams.append(key, value);
+        }
+      });
+
+      const response = await fetch(`/api/users?${queryParams.toString()}`);
+      const data = await response.json();
+
+      loadingState.classList.add("hidden");
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      const users = data.users || [];
+      resultsCount.textContent = `${users.length} match${users.length !== 1 ? 'es' : ''} found`;
+
+      if (users.length === 0) {
+        noResults.classList.remove("hidden");
+      } else {
+        // Create user cards
+        usersGrid.innerHTML = users.map((user: any) => createUserCard(user)).join('');
+      }
+
+    } catch (error) {
+      console.error('Search error:', error);
+      loadingState.classList.add("hidden");
+      errorState.classList.remove("hidden");
+    }
+  }
+
+  // Create user card HTML
+  function createUserCard(user: any) {
+    const fullName = [user.firstName, user.lastName].filter(Boolean).join(' ') || 'No Name';
+    const joinedDate = new Date(user.createdAt).toLocaleDateString();
+    
+    return `
+      <div class="bg-muted border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+        <div class="flex justify-center mb-4">
+          ${user.imageUrl 
+            ? `<img src="${user.imageUrl}" alt="${fullName} avatar" class="w-20 h-20 rounded-full object-cover border-2 border-primary/20" />`
+            : `<div class="w-20 h-20 rounded-full bg-primary text-white flex items-center justify-center text-2xl font-bold">
+                ${(user.firstName?.[0] || user.email?.[0] || 'U').toUpperCase()}
+               </div>`
+          }
+        </div>
+        <div class="text-center space-y-2">
+          <h3 class="text-lg font-semibold text-primary">${fullName}</h3>
+          <p class="text-sm text-muted-foreground">${user.email || ''}</p>
+          <div class="space-y-1 text-sm">
+            ${user.metadata?.age ? `<p class="text-muted-foreground"><span class="font-medium">Age:</span> ${user.metadata.age}</p>` : ''}
+            ${user.metadata?.nationality ? `<p class="text-muted-foreground"><span class="font-medium">Nationality:</span> ${user.metadata.nationality}</p>` : ''}
+            ${user.metadata?.maritalStatus ? `<p class="text-muted-foreground"><span class="font-medium">Status:</span> ${user.metadata.maritalStatus}</p>` : ''}
+            ${user.metadata?.residence ? `<p class="text-muted-foreground"><span class="font-medium">Residence:</span> ${user.metadata.residence}</p>` : ''}
+            ${user.metadata?.sect ? `<p class="text-muted-foreground"><span class="font-medium">Sect:</span> ${user.metadata.sect}</p>` : ''}
+          </div>
+          <p class="text-xs text-muted-foreground mt-3">Joined: ${joinedDate}</p>
+        </div>
+        <div class="mt-4 text-center">
+          <Button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+            View Profile
+          </Button>
+        </div>
+      </div>
+    `;
+  }
+
+  // Form submission
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      performSearch(currentFilters);
+    });
+  }
+
+  // Reset functionality
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      currentFilters = {};
+      
+      // Reset all select components by dispatching custom reset events
+      const selectWrappers = document.querySelectorAll('[data-select-wrapper]');
+      selectWrappers.forEach(wrapper => {
+        // Trigger a reset event that your SelectWrapper component can listen for
+        const resetEvent = new CustomEvent('resetSelect');
+        wrapper.dispatchEvent(resetEvent);
+      });
+      
+      // Alternative approach: Find all select elements and reset them
+      const allSelects = searchForm?.querySelectorAll('select');
+      if (allSelects) {
+        allSelects.forEach(select => {
+          select.selectedIndex = 0;
+        });
+      }
+      
+      // Hide results section
+      if (resultsSection) {
+        resultsSection.classList.add("hidden");
+      }
+      
+      // Hide advanced section
+      if (advSection && advancedButton) {
+        advSection.classList.add("hidden");
+        advancedButton.textContent = "Advanced";
+      }
+      
+      console.log("Form reset");
+    });
+  }
+
+  // Initialize with default search (optional)
+  // performSearch();
+</script>

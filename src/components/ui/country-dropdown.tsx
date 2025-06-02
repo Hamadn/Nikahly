@@ -167,7 +167,7 @@ const CountryDropdownComponent = (
                     </div>
                     <CheckIcon
                       className={cn(
-                        "ml-auto h-4 w-4 shrink-0 cursor-pointer",
+                        "ml-auto h-4 w-4 shrink-0",
                         option.name === selectedCountry?.name
                           ? "opacity-100"
                           : "opacity-0"

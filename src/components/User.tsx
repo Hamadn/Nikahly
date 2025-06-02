@@ -6,6 +6,7 @@ interface UserMetadata {
   gender?: string;
   dateOfBirth?: string;
   nationality?: string;
+  countryEmoji?: string;
   residence?: string;
   city?: string;
   maritalStatus?: string;
@@ -108,8 +109,26 @@ export default function User() {
         {/* div for the age, flag, location, nationality start */}
 
         <div id="age-flag-location-nation" className="p-5 flex flex-col gap-5 mt-5 lg:mt-24 justify-center items-center lg:justify-between lg:flex-row">
-
-            <img src="/uae-flag.svg" alt="age" className="h-full w-16"/>
+            <div id="nationality" className="flex gap-2 flex-wrap items-center">
+                {userData?.countryEmoji ? (
+                  <>
+                    <span className="text-xl" role="img" aria-label={userData.nationality || 'Nationality'}>
+                      {userData.countryEmoji}
+                    </span>
+                    {userData.nationality && (
+                      <span className="text-md lg:text-xl">
+                        {userData.nationality}
+                      </span>
+                    )}
+                  </>
+                ) : userData?.nationality ? (
+                  <span className="text-md lg:text-xl">
+                    {userData.nationality}
+                  </span>
+                ) : (
+                  <span className="text-md lg:text-xl">Nationality not specified</span>
+                )}
+            </div>
 
             <div id="location" className="flex gap-2 flex-wrap">
                 <i className="fa-solid fa-location-dot text-md lg:text-xl"></i>
@@ -262,13 +281,20 @@ export default function User() {
             </div>
             <div className="flex flex-col gap-2 p-4">
                 <h5 className="text-md lg:text-xl font-semibold">Nationality</h5>
-                <p className="text-md lg:text-xl">{userData?.nationality ? userData.nationality.charAt(0).toUpperCase() + userData.nationality.slice(1) : 'Not specified'}</p>
+                <div className="flex items-center gap-2">
+                  {userData?.countryEmoji && (
+                    <span className="text-xl" role="img" aria-label={userData.nationality || 'Nationality'}>
+                      {userData.countryEmoji}
+                    </span>
+                  )}
+                  <span>{userData?.nationality || 'Not specified'}</span>
+                </div>
             </div>
         </div>
 
         <br></br><br></br><br></br>
 
-        <h4 className="text-center lg:text-left text-primary text-xl lg:text-2xl font-semibold">
+        <h4 className="text-center lg:text-left text-primarzy text-xl lg:text-2xl font-semibold">
             My Education & Employment
         </h4>
 

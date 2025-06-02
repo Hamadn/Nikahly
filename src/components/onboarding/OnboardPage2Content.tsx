@@ -9,6 +9,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CountryDropdown } from "../ui/country-dropdown";
+import { FormField, FormItem } from "../ui/form";
+import { useForm } from "react-hook-form";
 
 const nationalityOptions = [
   { label: "Pakistani", value: "pakistani" },
@@ -37,13 +39,10 @@ const cityOptions = [
 const maritalStatusOptions = [
   { label: "Single", value: "single" },
   { label: "Engaged", value: "engaged" },
-  { label: "Married (Monogamous)", value: "married" },
-  { label: "Married (Polygamous)", value: "married" },
+  { label: "Married", value: "married" },
   { label: "Divorced", value: "divorced" },
   { label: "Widowed", value: "widowed" },
-  { label: "Seeking Polygyny", value: "seeking polygyny" },
   { label: "Annulled", value: "annulled" },
-  { label: "Prefer not to say", value: "prefer not to say" },
 ];
 
 const ageOptions = Array.from({ length: 83 }, (_, i) => ({
@@ -81,8 +80,6 @@ const bodyTypeOptions = [
   { label: "Curvy", value: "curvy" },
   { label: "Chubby", value: "chubby" },
   { label: "Muscular", value: "muscular" },
-  { label: "Prefer not to say", value: "prefer not to say" },
-  { label: "Other", value: "other" },
 ];
 
 const beardOptions = [
@@ -106,6 +103,20 @@ const eyeColorOptions = [
 const OnboardPage2Content = () => {
   const { formData, updateFormData } = useContext(OnboardingContext);
   
+  // Initialize form with existing formData
+  const form = useForm({
+    defaultValues: {
+      ...formData
+    }
+  });
+
+  // Update context when form values change
+  const onFormChange = (name: keyof typeof formData, value: any) => {
+    updateFormData(name, value);
+    // Also update the form state
+    form.setValue(name as any, value);
+  };
+  
   const handleSelectChange = (value: string, name: string) => {
     updateFormData(name, value);
   };
@@ -114,7 +125,6 @@ const OnboardPage2Content = () => {
     updateFormData('dateOfBirth', e.target.value);
   };
 
-  
   return (
     <div className="flex flex-col gap-12 p-4">
       <p className="text-secondary-foreground text-center lg:text-left text-xs lg:text-md font-semibold">Personal Details</p>
@@ -135,49 +145,87 @@ const OnboardPage2Content = () => {
       <div className="flex flex-wrap gap-6">
         <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Nationality</h6>
-          <CountryDropdown
-            placeholder="Nationality"
-            defaultValue="UAE"
-            onChange={() => {}}
+          <FormField
+            name="nationality"
+            control={form.control}
+            render={({ field }) => {
+              return (
+                <FormItem>
+                  <CountryDropdown
+                    placeholder="Nationality"
+                    defaultValue={field.value}
+                    onChange={(country: any) => {
+                      const alpha3 = country.alpha3;
+                      onFormChange("nationality", alpha3);
+                      field.onChange(alpha3);
+                    }}
+                  />
+                </FormItem>
+              );
+            }}
           />
         </div>
 
         <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">Residence</h6>
-          <Select 
-            onValueChange={(value) => handleSelectChange(value, "residence")} 
-            defaultValue={formData.residence || undefined}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select Residence" />
-            </SelectTrigger>
-            <SelectContent>
-              {residenceOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <FormField
+            name="residence"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <Select 
+                  onValueChange={(value) => {
+                    onFormChange("residence", value);
+                    field.onChange(value);
+                  }}
+                  defaultValue={formData.residence || undefined}
+                  value={field.value}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Residence" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {residenceOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormItem>
+            )}
+          />
         </div>
 
         <div className="flex-1 min-w-[150px]">
           <h6 className="text-primary text-sm lg:text-lg font-semibold mb-2">City</h6>
-          <Select 
-            onValueChange={(value) => handleSelectChange(value, "city")} 
-            defaultValue={formData.city || undefined}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select City" />
-            </SelectTrigger>
-            <SelectContent>
-              {cityOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <FormField
+            name="city"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <Select 
+                  onValueChange={(value) => {
+                    onFormChange("city", value);
+                    field.onChange(value);
+                  }}
+                  defaultValue={formData.city || undefined}
+                  value={field.value}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select City" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {cityOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </FormItem>
+            )}
+          />
         </div>
       </div>
 
@@ -367,3 +415,4 @@ const OnboardPage2Content = () => {
 };
 
 export default OnboardPage2Content;
+
